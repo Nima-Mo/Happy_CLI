@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Happy_CLI
 {
-    public class ColorText
+    public class AdvText
     {
         private int _posLeft;
         private int _posTop;
 
-        public ColorText() { }
+        public AdvText() { }
         public void write(string text,ConsoleColor fcolor) 
         {
             Console.ForegroundColor = fcolor;
