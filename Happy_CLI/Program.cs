@@ -2,11 +2,13 @@
 
 AdvText advtext = new AdvText();
 OutStyle outStyle = new OutStyle();
-string[] list =
-{
-    "1-nima","2-liana","3-parisa","4-nikoo","5-shima","6-parisa",
-    "7-nima","8-liana","9-parisa","10-nikoo","11-shima","12-parisa"
-};
 
-outStyle.columnOut(list,5);
+SortedList<string,string> slist = new SortedList<string,string>();
+slist.Add("niam", "mohammadi");
+slist.Add("liana", "mohammadi");
+slist.Add("parisa", "mohammadi");
+slist.Add("parisadfg", "mohammadigdfgdfgfdgfgdfgdfgfdgfdgfdg");
+
+outStyle.listComment(slist,ConsoleColor.Green,ConsoleColor.Red
+    , ConsoleColor.Yellow,ConsoleColor.Blue, 2);
 

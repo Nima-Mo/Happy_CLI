@@ -62,12 +62,43 @@ namespace Happy_CLI
                     else
                     {
                         break;
-                    }
-                    
+                    }    
                 }
                 Col = 0;
                 Console.WriteLine();
             }
+        }
+        public void listComment(SortedList<string,string> slist,ConsoleColor fKeyColor, ConsoleColor fValColor, int countTab = 1)
+        {
+            string tab = string.Empty;
+            for (int i = 0; i < countTab; i++) { tab += "\t"; }
+            foreach (string s in slist.Keys)
+            {
+                Console.ForegroundColor = fKeyColor;
+                Console.Write("{0,-15}{1}",s,tab);
+                Console.ForegroundColor = fValColor;
+                Console.Write("{0,-15}", slist[s]);
+                Console.ResetColor();
+                Console.WriteLine();
+            }
+
+        }
+        public void listComment(SortedList<string, string> slist, ConsoleColor fKeyColor, ConsoleColor fValColor, ConsoleColor bKeyColor, ConsoleColor bValColor, int countTab = 1)
+        {
+            string tab = string.Empty;
+            for (int i = 0; i < countTab; i++) { tab += "\t"; }
+            foreach (string s in slist.Keys)
+            {
+                Console.ForegroundColor = fKeyColor;
+                Console.BackgroundColor = bKeyColor;
+                Console.Write("{0,-15}{1}", s, tab);
+                Console.ForegroundColor = bKeyColor;
+                Console.BackgroundColor = bValColor;
+                Console.Write("{0,-15}", slist[s]);
+                Console.ResetColor();
+                Console.WriteLine();
+            }
+
         }
 
     }
