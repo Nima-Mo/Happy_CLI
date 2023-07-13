@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Happy_CLI
+﻿namespace Happy_CLI
 {
     public class AdvText
     {
@@ -12,13 +6,13 @@ namespace Happy_CLI
         private int _posTop;
 
         public AdvText() { }
-        public void write(string text,ConsoleColor fcolor) 
+        public void write(string text, ConsoleColor fcolor)
         {
             Console.ForegroundColor = fcolor;
             Console.Write(text);
             Console.ResetColor();
         }
-        public void write(string text, ConsoleColor fcolor,ConsoleColor bcolor)
+        public void write(string text, ConsoleColor fcolor, ConsoleColor bcolor)
         {
             Console.ForegroundColor = fcolor;
             Console.BackgroundColor = bcolor;
@@ -38,7 +32,7 @@ namespace Happy_CLI
             Console.WriteLine(text);
             Console.ResetColor();
         }
-        public void RepeatCharacter(char ch, int count,bool newLine = true) 
+        public void RepeatCharacter(char ch, int count, bool newLine = true)
         {
             string tempo = string.Empty;
             tempo = tempo.PadLeft(count, ch);
@@ -51,7 +45,7 @@ namespace Happy_CLI
                 Console.Write(tempo);
             }
         }
-        public void RepeatCharacterColor(char ch, int count,ConsoleColor fcolor, bool newLine = true)
+        public void RepeatCharacterColor(char ch, int count, ConsoleColor fcolor, bool newLine = true)
         {
             string tempo = string.Empty;
             tempo = tempo.PadLeft(count, ch);
@@ -70,14 +64,14 @@ namespace Happy_CLI
             tempo = tempo.PadLeft(count, ch);
             if (newLine)
             {
-                this.writeLine(tempo, fcolor,bcolor);
+                this.writeLine(tempo, fcolor, bcolor);
             }
             else
             {
-                this.write(tempo, fcolor,bcolor);
+                this.write(tempo, fcolor, bcolor);
             }
         }
-        public void positionText(string text,int left,int top)
+        public void positionText(string text, int left, int top)
         {
             Console.SetCursorPosition(left, top);
             Console.WriteLine(text);
@@ -85,12 +79,12 @@ namespace Happy_CLI
         public int posLeft
         {
             get { return this._posLeft; }
-            set { this._posLeft = value;}
+            set { this._posLeft = value; }
         }
         public int posTop
         {
             get { return this._posTop; }
-            set { this._posTop = value;}
+            set { this._posTop = value; }
         }
         public void positionTextAt(string text, int left, int top)
         {
@@ -99,5 +93,25 @@ namespace Happy_CLI
             Console.SetCursorPosition(Left, Top);
             Console.Write(text);
         }
+        public void positionTextAt(string text, int left, int top,ConsoleColor fColor)
+        {
+            int Left = this._posLeft + left;
+            int Top = this._posTop + top;
+            Console.SetCursorPosition(Left, Top);
+            Console.ForegroundColor = fColor;
+            Console.Write(text);
+            Console.ResetColor();
+        }
+        public void positionTextAt(string text, int left, int top, ConsoleColor fColor,ConsoleColor bColor)
+        {
+            int Left = this._posLeft + left;
+            int Top = this._posTop + top;
+            Console.SetCursorPosition(Left, Top);
+            Console.ForegroundColor = fColor;
+            Console.BackgroundColor = bColor;
+            Console.Write(text);
+            Console.ResetColor();
+        }
+
     }
 }
