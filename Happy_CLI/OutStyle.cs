@@ -224,7 +224,6 @@ namespace Happy_CLI
                 {
                     Console.Write(text);
                 }
-
             }
             Console.ResetColor();
             Console.WriteLine();
