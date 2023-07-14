@@ -203,8 +203,31 @@ namespace Happy_CLI
                     min++;
                 }
             }
+        }
+        public void ribon(string text,bool alignCenter , ConsoleColor bColor,ConsoleColor fColor)
+        {
+            int max = 0;
+            if(alignCenter)
+            {
+                max = (Console.WindowWidth / 2) - (text.Length / 2);
+            }
+            else
+            {
+                max = (Console.WindowWidth / 4) - (text.Length / 2);
+            }
+            for (int i = 0; i < (Console.WindowWidth - text.Length); i++)
+            {
+                Console.BackgroundColor = bColor;
+                Console.ForegroundColor = fColor;
+                Console.Write(" ");
+                if (i == max)
+                {
+                    Console.Write(text);
+                }
 
-            
+            }
+            Console.ResetColor();
+            Console.WriteLine();
         }
     }
 }

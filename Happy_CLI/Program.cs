@@ -48,19 +48,8 @@ string[] strings = {
 " your AWS services._T",
 };
 
-outStyle.olListChar(strings,true,"_", ConsoleColor.Red, ConsoleColor.Green);
+outStyle.olListChar(strings,true," - ", ConsoleColor.Red, ConsoleColor.Green);
+string tempo = "welcom to my files welcom to my to my files welcom";
+outStyle.ribon(tempo,false, ConsoleColor.Green, ConsoleColor.Gray);
 
 
-
-//int count = 0;
-//for(int i = 0; i < strings.Length; i++)
-//{
-//    Console.SetCursorPosition(5, count++);
-//    Console.WriteLine(strings[i]);
-//}
-//count= 0;
-//for (int i = 0; i < strings.Length; i++)
-//{
-//    Console.SetCursorPosition(40, count++);
-//    Console.WriteLine(strings[i]);
-//}
