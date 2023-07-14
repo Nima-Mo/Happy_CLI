@@ -1,14 +1,16 @@
 ﻿using Happy_CLI;
+using System.Runtime.InteropServices.JavaScript;
 
 AdvText advtext = new AdvText();
 OutStyle outStyle = new OutStyle();
 
 SortedList<string,string> slist = new SortedList<string,string>();
-slist.Add("niam", "mohammadi");
-slist.Add("liana", "mohammadi");
-slist.Add("parisa", "mohammadi");
-slist.Add("parisadfg", "mohammadigdfgdfgfdgfgdfgdfgfdgfdgfdg");
+string[][] dialog = new string[2][];
+dialog[0] = new string[4] {"dialog1",
+    "tow = Array does not have that many dimensions.",
+    "tree Array does not have that many dimensions.",
+    "for Array does not have that many dimensions."
+};
+dialog[1] = new string[4] { "dialog2", "tow", "tree", "for" };
 
-outStyle.listComment(slist,ConsoleColor.Green,ConsoleColor.Red
-    , ConsoleColor.Yellow,ConsoleColor.Blue, 2);
-
+outStyle.dialog(dialog,ConsoleColor.Red,ConsoleColor.Green);

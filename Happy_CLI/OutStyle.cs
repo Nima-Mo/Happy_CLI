@@ -68,6 +68,18 @@ namespace Happy_CLI
                 Console.WriteLine();
             }
         }
+        public void listComment(SortedList<string, string> slist, int countTab = 1)
+        {
+            string tab = string.Empty;
+            for (int i = 0; i < countTab; i++) { tab += "\t"; }
+            foreach (string s in slist.Keys)
+            {
+                Console.Write("{0,-15}{1}", s, tab);
+                Console.Write("{0,-15}", slist[s]);
+                Console.ResetColor();
+                Console.WriteLine();
+            }
+        }
         public void listComment(SortedList<string,string> slist,ConsoleColor fKeyColor, ConsoleColor fValColor, int countTab = 1)
         {
             string tab = string.Empty;
@@ -81,7 +93,6 @@ namespace Happy_CLI
                 Console.ResetColor();
                 Console.WriteLine();
             }
-
         }
         public void listComment(SortedList<string, string> slist, ConsoleColor fKeyColor, ConsoleColor fValColor, ConsoleColor bKeyColor, ConsoleColor bValColor, int countTab = 1)
         {
@@ -98,8 +109,23 @@ namespace Happy_CLI
                 Console.ResetColor();
                 Console.WriteLine();
             }
-
         }
-
+        public void dialog(string[][]dialog,ConsoleColor titleColor = ConsoleColor.White,ConsoleColor textColor = ConsoleColor.White)
+        {
+           for(int i = 0; i < dialog.Length;i++) 
+            {
+                for(int j = 0; j < dialog[i].Length;j++)
+                {
+                    if( j == 0 )
+                    {
+                        this.writeLine(dialog[i][j],titleColor);
+                    }
+                    else
+                    {
+                        this.writeLine("\t" + dialog[i][j],textColor);
+                    }
+                }  
+            } 
+        }
     }
 }
