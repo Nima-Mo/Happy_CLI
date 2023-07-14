@@ -127,5 +127,84 @@ namespace Happy_CLI
                 }  
             } 
         }
+        public void olListNumber(string[] strings,int start = 1,string sep = "-",ConsoleColor numColor = ConsoleColor.White,ConsoleColor textColor = ConsoleColor.White)
+        {
+            string tempo = string.Empty;
+
+            for(int i = 0;i < strings.Length;i++)
+            {
+                tempo = start.ToString() + sep;
+                this.write(tempo,numColor);
+                this.write(strings[i],textColor);
+                Console.WriteLine();
+                start++;
+            }
+        }
+        public void olListChar(string[] strings,bool upperCase , string sep = "-", ConsoleColor numColor = ConsoleColor.White, ConsoleColor textColor = ConsoleColor.White)
+        {
+            string tempo = string.Empty;
+            int min = 0;
+            int max = 0;
+            int min2 = 0;
+            bool key = false;
+            
+            if (upperCase)
+            {
+                min = 65;
+                min2 = 64;
+                max = 90;
+
+                for (int i = 0; i < strings.Length; i++)
+                {
+                    if (min == max)
+                    {
+                        min = 65;
+                        key = true;
+                        min2++;
+                    }
+                    if (key)
+                    {
+                        tempo = ((char)min).ToString() + ((char)min2).ToString() + sep;
+                    }
+                    else
+                    {
+                        tempo = ((char)min).ToString() + sep;
+                    }
+                    this.write(tempo, numColor);
+                    this.write(strings[i], textColor);
+                    Console.WriteLine();
+                    min++;
+                }
+            }
+            else
+            {
+                min = 97;
+                min2 = 96;
+                max = 122;
+                for (int i = 0; i < strings.Length; i++)
+                {
+                    if (min == max)
+                    {
+                        min = 97;
+                        key = true;
+                        min2++;
+                    }
+                    if(key)
+                    {
+                        tempo = ((char)min).ToString()+ ((char)min2).ToString() + sep;
+                    }
+                    else
+                    {
+                        tempo = ((char)min).ToString() + sep;
+                    }
+                    this.write(tempo, numColor);
+                    this.write(strings[i], textColor);
+                    Console.WriteLine();
+                    min++;
+                }
+            }
+
+            
+        }
     }
 }
