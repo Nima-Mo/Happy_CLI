@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Happy_CLI
 {
-    public class OutStyle:Happy_CLI.AdvText
+    public class OutPutStyle:Happy_CLI.AdvText
     {
-        public OutStyle(){}
+        public OutPutStyle(){}
         public void columnOut(string[]list,int row,int col,ConsoleColor color = ConsoleColor.White)
         {
             if (list.Length == 0)
@@ -204,7 +204,7 @@ namespace Happy_CLI
                 }
             }
         }
-        public void ribon(string text,bool alignCenter , ConsoleColor bColor,ConsoleColor fColor)
+        public void ribon(string text,bool alignCenter,ConsoleColor bColor,ConsoleColor fColor)
         {
             int max = 0;
             if(alignCenter)

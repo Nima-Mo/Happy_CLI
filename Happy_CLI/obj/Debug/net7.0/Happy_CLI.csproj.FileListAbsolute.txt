@@ -1,4 +1,3 @@
-C:\Users\Dell\source\repos\Happy_CLI\Happy_CLI\Happy_CLI\obj\Debug\net7.0\Happy_CLI.csproj.AssemblyReference.cache
 C:\Users\Dell\source\repos\Happy_CLI\Happy_CLI\Happy_CLI\obj\Debug\net7.0\Happy_CLI.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Dell\source\repos\Happy_CLI\Happy_CLI\Happy_CLI\obj\Debug\net7.0\Happy_CLI.AssemblyInfoInputs.cache
 C:\Users\Dell\source\repos\Happy_CLI\Happy_CLI\Happy_CLI\obj\Debug\net7.0\Happy_CLI.AssemblyInfo.cs
