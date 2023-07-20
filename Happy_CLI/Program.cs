@@ -1,8 +1,12 @@
 ﻿using Happy_CLI;
 
-AdvText advtext = new AdvText();
 OutPutStyle outPutStyle = new OutPutStyle();
-BannerTerminal banner = new BannerTerminal("ABCD","*",ConsoleColor.Blue);
+string[] lst = {"asdsa","asdasd","fhfffg","dfgdfgdg","ytuytuy","weqwere","cvxcvxc","kljkljk","7567fhgfhf" };
+SortedList<string,string> keyValues = new SortedList<string,string>();
+keyValues.Add("one", "dfdsfsfsdfdsfs");
+keyValues.Add("tow", "fsdfsdfsdfsdf");
+outPutStyle.explanationText(keyValues,2);
+outPutStyle.ColumnarText(lst, 5,2,ConsoleColor.Red,ConsoleColor.Green);
 
 
 

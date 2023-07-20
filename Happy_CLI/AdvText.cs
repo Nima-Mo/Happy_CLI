@@ -7,6 +7,14 @@
 
         public AdvText() { }
         /// <summary>
+        /// text printing. No new line
+        /// </summary>
+        /// <param name="text">Input Text</param>
+        public void write(string text)
+        {
+            Console.Write(text);
+        }
+        /// <summary>
         /// Color text printing. No new line
         /// </summary>
         /// <param name="text">Input Text</param>
