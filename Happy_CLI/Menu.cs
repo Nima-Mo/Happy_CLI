@@ -8,30 +8,29 @@ namespace Happy_CLI
 {
     public class Menu:AdvText
     {
-        public void menu(string[] strings,ref int number)
+        public void menu(string[] strings,ref int number,ConsoleColor fSelColor,ConsoleColor bSelColor,ConsoleColor fColor,ConsoleColor bColor)
         {
             int counter = 0;
-            int i = 0;
             ConsoleKeyInfo ck;
+
             while (true)
             {
-                for(i = 0; i < strings.Length; i++) 
+                for(int i = 0; i < strings.Length; i++) 
                 {
                     if(counter == i)
                     {
-                        this.writeLine("[" + i.ToString() + "]" + strings[i],ConsoleColor.Green);
+                        this.writeLine("[" + i.ToString() + "]" + strings[i],fSelColor,bSelColor);
                     }
                     else
                     {
-                        this.writeLine("[" + i.ToString() + "]" + strings[i], ConsoleColor.White);
+                        this.writeLine("[" + i.ToString() + "]" + strings[i],fColor,bColor);
                     }
                 }
-             
                 ck = Console.ReadKey();
-                if(counter >= strings.Length)
+                if(counter > strings.Length)
                 {
                     counter = 0;
-                }else if(counter <= 0)
+                }else if(counter < 0)
                 {
                     counter = strings.Length;
                 }
@@ -51,7 +50,6 @@ namespace Happy_CLI
 
                 }
                 Console.Clear();
-                i++;
             }
         }
     }
