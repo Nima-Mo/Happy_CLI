@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Dell\\source\\repos\\Happy_CLI\\Happy_CLI\\Happy_CLI\\Happy_CLI.csproj": {}
+    "c:\\Users\\Dell\\source\\repos\\Happy_CLI\\Happy_CLI\\Happy_CLI\\Happy_CLI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Dell\\source\\repos\\Happy_CLI\\Happy_CLI\\Happy_CLI\\Happy_CLI.csproj": {
+    "c:\\Users\\Dell\\source\\repos\\Happy_CLI\\Happy_CLI\\Happy_CLI\\Happy_CLI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Dell\\source\\repos\\Happy_CLI\\Happy_CLI\\Happy_CLI\\Happy_CLI.csproj",
+        "projectUniqueName": "c:\\Users\\Dell\\source\\repos\\Happy_CLI\\Happy_CLI\\Happy_CLI\\Happy_CLI.csproj",
         "projectName": "Happy_CLI",
-        "projectPath": "C:\\Users\\Dell\\source\\repos\\Happy_CLI\\Happy_CLI\\Happy_CLI\\Happy_CLI.csproj",
+        "projectPath": "c:\\Users\\Dell\\source\\repos\\Happy_CLI\\Happy_CLI\\Happy_CLI\\Happy_CLI.csproj",
         "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Dell\\source\\repos\\Happy_CLI\\Happy_CLI\\Happy_CLI\\obj\\",
+        "outputPath": "c:\\Users\\Dell\\source\\repos\\Happy_CLI\\Happy_CLI\\Happy_CLI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
