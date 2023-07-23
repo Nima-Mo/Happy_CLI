@@ -126,5 +126,67 @@ namespace Happy_CLI
                 Console.Clear();
             }
         }
+        public void waterfallMenuBox(string[] strings, ref int outNumber, ConsoleColor fSelColor, ConsoleColor bSelColor,
+                                     ConsoleColor fColor, ConsoleColor bColor, int top, int left)
+        {
+            int counter = 0;
+            int posTop = 0;
+            string line = "";
+            ConsoleKeyInfo ck;
+            
+            if(strings.Length < 0){return;}
+
+            int maxLength = strings.Max(x => x).Length;
+            line = line.PadLeft(maxLength+8, '-');
+       
+            while (true)
+            {
+                posTop = top;
+
+                if (counter >= strings.Length)
+                {
+                    counter = 0;
+                }
+                else if (counter < 0)
+                {
+                    counter = strings.Length - 1;
+                }
+                //up line
+                this.positionText(line, left, posTop++, fColor, bColor);
+                
+                for (int i = 0; i < strings.Length; i++)
+                {
+                    if (counter == i)
+                    {
+                        this.positionText("| [" + i.ToString() + "] " + strings[i] + " |", left, posTop, fSelColor, bSelColor);
+                    }
+                    else
+                    {
+                        this.positionText("| [" + i.ToString() + "] " + strings[i] + " |", left, posTop, fColor, bColor);
+                    }
+                    posTop++;
+                }
+                //down line
+                this.positionText(line, left, posTop, fColor, bColor);
+                
+                ck = Console.ReadKey();
+                if (ck.Key == ConsoleKey.DownArrow)
+                {
+                    counter++;
+                }
+                else if (ck.Key == ConsoleKey.UpArrow)
+                {
+                    counter--;
+                }
+                else if (ck.Key == ConsoleKey.Enter)
+                {
+                    outNumber = counter;
+                    break;
+                }
+                
+                Console.Clear();
+            }
+        }
+       
     }
 }
