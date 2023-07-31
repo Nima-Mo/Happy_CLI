@@ -336,5 +336,189 @@ namespace Happy_CLI
                 Console.Clear();
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="strings"></param>
+        /// <param name="outNumber"></param>
+        /// <param name="fSelColor"></param>
+        /// <param name="bSelColor"></param>
+        /// <param name="fSelMarkColor"></param>
+        /// <param name="bSelMarkColor"></param>
+        /// <param name="fColor"></param>
+        /// <param name="bColor"></param>
+        /// <param name="fMarkColor"></param>
+        /// <param name="bMarkColor"></param>
+        /// <param name="top"></param>
+        /// <param name="left"></param>
+        public void waterfallMenuBox(string[] strings, ref int outNumber, ConsoleColor fSelColor, ConsoleColor bSelColor,ConsoleColor fSelMarkColor,
+        ConsoleColor bSelMarkColor,ConsoleColor fColor, ConsoleColor bColor, ConsoleColor fMarkColor, ConsoleColor bMarkColor, int top, int left)
+        {
+            int counter = 0;
+            int posTop = 0;
+            string line = "";
+            string temp1 = string.Empty;
+            string temp2 = string.Empty;
+            string temp3 = string.Empty;
+            ConsoleKeyInfo ck;
+
+            if (strings.Length < 0) { return; }
+
+            int maxLength = strings.Max(x => x).Length;
+            line = line.PadLeft(maxLength + 8, '-');
+
+            while (true)
+            {
+                posTop = top;
+
+                if (counter >= strings.Length)
+                {
+                    counter = 0;
+                }
+                else if (counter < 0)
+                {
+                    counter = strings.Length - 1;
+                }
+                //up line
+                this.positionText(line, left, posTop++, fColor, bColor);
+
+                for (int i = 0; i < strings.Length; i++)
+                {
+                    if (counter == i)
+                    {
+                        temp1 = "| ";
+                        this.positionText(temp1, left, posTop, fColor, bColor);
+                        temp2 = "[" + i.ToString() + "] ";
+                        this.positionText(temp2,(left + temp1.Length),posTop,fSelMarkColor,bSelMarkColor);
+                        this.positionText(strings[i], (left + temp1.Length + temp2.Length), posTop, fSelColor, bSelColor);
+                        temp3 = " |";
+                        this.positionText(temp3, (left + temp1.Length + temp2.Length + strings[i].Length), posTop, fColor, bColor);
+                    }
+                    else
+                    {
+                        temp1 = "| ";
+                        this.positionText(temp1, left, posTop, fColor, bColor);
+                        temp2 = "[" + i.ToString() + "] ";
+                        this.positionText(temp2, (left + temp1.Length), posTop, fMarkColor, bSelMarkColor);
+                        this.positionText(strings[i], (left + temp1.Length + temp2.Length), posTop, fColor, bColor);
+                        temp3 = " |";
+                        this.positionText(temp3, (left + temp1.Length + temp2.Length + strings[i].Length), posTop, fColor, bColor);
+                    }
+                    posTop++;
+                }
+                //down line
+                this.positionText(line, left, posTop, fColor, bColor);
+
+                ck = Console.ReadKey();
+                if (ck.Key == ConsoleKey.DownArrow)
+                {
+                    counter++;
+                }
+                else if (ck.Key == ConsoleKey.UpArrow)
+                {
+                    counter--;
+                }
+                else if (ck.Key == ConsoleKey.Enter)
+                {
+                    outNumber = counter;
+                    break;
+                }
+
+                Console.Clear();
+            }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="strings"></param>
+        /// <param name="symbol"></param>
+        /// <param name="outNumber"></param>
+        /// <param name="fSelColor"></param>
+        /// <param name="bSelColor"></param>
+        /// <param name="fSelMarkColor"></param>
+        /// <param name="bSelMarkColor"></param>
+        /// <param name="fColor"></param>
+        /// <param name="bColor"></param>
+        /// <param name="fMarkColor"></param>
+        /// <param name="bMarkColor"></param>
+        /// <param name="top"></param>
+        /// <param name="left"></param>
+        public void waterfallMenuBox(string[] strings,char symbol, ref int outNumber, ConsoleColor fSelColor, ConsoleColor bSelColor, ConsoleColor fSelMarkColor,
+        ConsoleColor bSelMarkColor, ConsoleColor fColor, ConsoleColor bColor, ConsoleColor fMarkColor, ConsoleColor bMarkColor, int top, int left)
+        {
+            int counter = 0;
+            int posTop = 0;
+            string line = "";
+            string temp1 = string.Empty;
+            string temp2 = string.Empty;
+            string temp3 = string.Empty;
+            ConsoleKeyInfo ck;
+
+            if (strings.Length < 0) { return; }
+
+            int maxLength = strings.Max(x => x).Length;
+            line = line.PadLeft(maxLength + 8, '-');
+
+            while (true)
+            {
+                posTop = top;
+
+                if (counter >= strings.Length)
+                {
+                    counter = 0;
+                }
+                else if (counter < 0)
+                {
+                    counter = strings.Length - 1;
+                }
+                //up line
+                this.positionText(line, left, posTop++, fColor, bColor);
+
+                for (int i = 0; i < strings.Length; i++)
+                {
+                    if (counter == i)
+                    {
+                        temp1 = "| ";
+                        this.positionText(temp1, left, posTop, fColor, bColor);
+                        temp2 = "[" + symbol.ToString() + "] ";
+                        this.positionText(temp2, (left + temp1.Length), posTop, fSelMarkColor, bSelMarkColor);
+                        this.positionText(strings[i], (left + temp1.Length + temp2.Length), posTop, fSelColor, bSelColor);
+                        temp3 = " |";
+                        this.positionText(temp3, (left + temp1.Length + temp2.Length + strings[i].Length), posTop, fColor, bColor);
+                    }
+                    else
+                    {
+                        temp1 = "| ";
+                        this.positionText(temp1, left, posTop, fColor, bColor);
+                        temp2 = "[" + i.ToString() + "] ";
+                        this.positionText(temp2, (left + temp1.Length), posTop, fMarkColor, bSelMarkColor);
+                        this.positionText(strings[i], (left + temp1.Length + temp2.Length), posTop, fColor, bColor);
+                        temp3 = " |";
+                        this.positionText(temp3, (left + temp1.Length + temp2.Length + strings[i].Length), posTop, fColor, bColor);
+                    }
+                    posTop++;
+                }
+                //down line
+                this.positionText(line, left, posTop, fColor, bColor);
+
+                ck = Console.ReadKey();
+                if (ck.Key == ConsoleKey.DownArrow)
+                {
+                    counter++;
+                }
+                else if (ck.Key == ConsoleKey.UpArrow)
+                {
+                    counter--;
+                }
+                else if (ck.Key == ConsoleKey.Enter)
+                {
+                    outNumber = counter;
+                    break;
+                }
+
+                Console.Clear();
+            }
+        }
     }
+
 }

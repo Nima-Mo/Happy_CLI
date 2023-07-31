@@ -13,6 +13,7 @@ string[] lst = {
     "Menu item one in system     " 
 };
 int num = 0;
-menu.waterfallMenuBox(lst, '+',ref num, ConsoleColor.Red, ConsoleColor.Green, ConsoleColor.White, ConsoleColor.Black,5,5);
+menu.waterfallMenuBox(lst,'+',ref num,ConsoleColor.Blue,ConsoleColor.White,ConsoleColor.Green,ConsoleColor.Black
+    ,ConsoleColor.Blue,ConsoleColor.Black,ConsoleColor.Blue,ConsoleColor.Black,1,1);
 Console.WriteLine(num);
 
