@@ -123,6 +123,21 @@
             }
         }
         /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ch"></param>
+        /// <param name="count"></param>
+        /// <param name="fColor"></param>
+        /// <param name="bColor"></param>
+        /// <param name="left"></param>
+        /// <param name="top"></param>
+        public void RepeatCharacterColor(char ch, int count, ConsoleColor fColor, ConsoleColor bColor,int left,int top)
+        {
+            string tempo = string.Empty;
+            tempo = tempo.PadLeft(count, ch);
+            this.positionText(tempo,left, top,fColor,bColor);
+        }
+        /// <summary>
         /// Print text in position
         /// </summary>
         /// <param name="text">Input Text</param>

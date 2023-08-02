@@ -8,6 +8,18 @@ namespace Happy_CLI
 {
     public class Menu:AdvText
     {
+        protected void maxSpace(ref string[] lst,int maxLine)
+        {
+            int countSpace = 0;
+            for(int i = 0; i < lst.Length; i++)
+            {
+                if (lst[i].Length < maxLine)
+                {
+                    countSpace = maxLine - lst[i].Length;
+                    lst[i] += string.Empty.PadLeft(countSpace,' ');
+                }
+            }
+        }
         /// <summary>
         /// Dynamic waterfall menu with output
         /// </summary>
@@ -22,45 +34,66 @@ namespace Happy_CLI
             int counter = 0;
             ConsoleKeyInfo ck;
 
-            while (true)
+            try
             {
-                if (counter >= strings.Length)
+                int maxLength = strings.Max(x => x).Length;
+                this.maxSpace(ref strings, maxLength);
+
+                while (true)
                 {
-                    counter = 0;
-                }
-                else if (counter < 0)
-                {
-                    counter = strings.Length - 1;
-                }
-                for (int i = 0; i < strings.Length; i++) 
-                {
-                    if(counter == i)
+                    if (counter >= strings.Length)
                     {
-                        this.writeLine("[" + i.ToString() + "] " + strings[i],fSelColor,bSelColor);
+                        counter = 0;
+                    }
+                    else if (counter < 0)
+                    {
+                        counter = strings.Length - 1;
+                    }
+                    for (int i = 0; i < strings.Length; i++)
+                    {
+                        if (counter == i)
+                        {
+                            this.writeLine("[" + i.ToString() + "] " + strings[i], fSelColor, bSelColor);
+                        }
+                        else
+                        {
+                            this.writeLine("[" + i.ToString() + "] " + strings[i], fColor, bColor);
+                        }
+                    }
+                    ck = Console.ReadKey();
+                    if (ck.Key == ConsoleKey.DownArrow)
+                    {
+                        counter++;
+                    }
+                    else if (ck.Key == ConsoleKey.UpArrow)
+                    {
+                        counter--;
+                    }
+                    else if (ck.Key == ConsoleKey.Enter)
+                    {
+                        outNumber = counter;
+                        break;
                     }
                     else
                     {
-                        this.writeLine("[" + i.ToString() + "] " + strings[i],fColor,bColor);
+                        this.write("error key input", ConsoleColor.Red);
                     }
+                    Console.Clear();
                 }
-                ck = Console.ReadKey();
-                if (ck.Key == ConsoleKey.DownArrow) 
-                {
-                    counter++;
-                } else if(ck.Key == ConsoleKey.UpArrow)
-                {
-                    counter--;
-                }else if(ck.Key == ConsoleKey.Enter)
-                {
-                    outNumber = counter;
-                    break;
-                }
-                else
-                {
-                    this.write("error key input", ConsoleColor.Red);
-                }
-                Console.Clear();
             }
+            catch (NullReferenceException e)
+            {
+                this.writeLine("message 1: " + e.Message.ToString(), ConsoleColor.Red);
+            }
+            catch (Exception e)
+            {
+                this.writeLine("message 2: " + e.Message.ToString(), ConsoleColor.Red);
+            }
+            finally
+            {
+
+            }
+
         }
         /// <summary>
         /// Dynamic waterfall menu with output
@@ -79,52 +112,70 @@ namespace Happy_CLI
             int counter = 0;
             int posTop = 0;
             ConsoleKeyInfo ck;
-
-            while (true)
+            try
             {
-                posTop = top;
+                int maxLength = strings.Max(x => x).Length;
+                this.maxSpace(ref strings, maxLength);
 
-                if (counter >= strings.Length)
+                while (true)
                 {
-                    counter = 0;
-                }
-                else if (counter < 0)
-                {
-                    counter = strings.Length - 1;
-                }
-                for (int i = 0; i < strings.Length; i++)
-                {
-                    if (counter == i)
+                    posTop = top;
+
+                    if (counter >= strings.Length)
                     {
-                        
-                        this.positionText("[" + i.ToString() + "] " + strings[i],left, posTop, fSelColor, bSelColor);
+                        counter = 0;
+                    }
+                    else if (counter < 0)
+                    {
+                        counter = strings.Length - 1;
+                    }
+                    for (int i = 0; i < strings.Length; i++)
+                    {
+                        if (counter == i)
+                        {
+
+                            this.positionText("[" + i.ToString() + "] " + strings[i], left, posTop, fSelColor, bSelColor);
+                        }
+                        else
+                        {
+                            this.positionText("[" + i.ToString() + "] " + strings[i], left, posTop, fColor, bColor);
+                        }
+                        posTop++;
+                    }
+                    ck = Console.ReadKey();
+                    if (ck.Key == ConsoleKey.DownArrow)
+                    {
+                        counter++;
+                    }
+                    else if (ck.Key == ConsoleKey.UpArrow)
+                    {
+                        counter--;
+                    }
+                    else if (ck.Key == ConsoleKey.Enter)
+                    {
+                        outNumber = counter;
+                        break;
                     }
                     else
                     {
-                        this.positionText("[" + i.ToString() + "] " + strings[i], left, posTop, fColor, bColor);
+                        this.write("error key input", ConsoleColor.Red);
                     }
-                    posTop++;
+                    Console.Clear();
                 }
-                ck = Console.ReadKey();
-                if (ck.Key == ConsoleKey.DownArrow)
-                {
-                    counter++;
-                }
-                else if (ck.Key == ConsoleKey.UpArrow)
-                {
-                    counter--;
-                }
-                else if (ck.Key == ConsoleKey.Enter)
-                {
-                    outNumber = counter;
-                    break;
-                }
-                else
-                {
-                    this.write("error key input", ConsoleColor.Red);
-                }
-                Console.Clear();
             }
+            catch (NullReferenceException e)
+            {
+                this.writeLine("message 1: " + e.Message.ToString(), ConsoleColor.Red);
+            }
+            catch (Exception e)
+            {
+                this.writeLine("message 2: " + e.Message.ToString(), ConsoleColor.Red);
+            }
+            finally
+            {
+
+            }
+            
         }
         /// <summary>
         /// Dynamic waterfall menu with output
@@ -138,58 +189,76 @@ namespace Happy_CLI
         /// <param name="bColor">background color</param>
         /// <param name="top">positin Top menu</param>
         /// <param name="left">position left menu</param>
-        public void waterfallMenu(string[] strings,string symbol, ref int outNumber, ConsoleColor fSelColor, ConsoleColor bSelColor,
+        public void waterfallMenu(string[] strings,char symbol, ref int outNumber, ConsoleColor fSelColor, ConsoleColor bSelColor,
             ConsoleColor fColor, ConsoleColor bColor, int top, int left)
         {
             int counter = 0;
             int posTop = 0;
             ConsoleKeyInfo ck;
 
-            while (true)
+            try
             {
-                posTop = top;
+                int maxLength = strings.Max(x => x).Length;
+                this.maxSpace(ref strings, maxLength);
 
-                if (counter >= strings.Length)
+                while (true)
                 {
-                    counter = 0;
-                }
-                else if (counter < 0)
-                {
-                    counter = strings.Length - 1;
-                }
-                for (int i = 0; i < strings.Length; i++)
-                {
-                    if (counter == i)
+                    posTop = top;
+
+                    if (counter >= strings.Length)
                     {
+                        counter = 0;
+                    }
+                    else if (counter < 0)
+                    {
+                        counter = strings.Length - 1;
+                    }
+                    for (int i = 0; i < strings.Length; i++)
+                    {
+                        if (counter == i)
+                        {
 
-                        this.positionText("[" + symbol + "] " + strings[i], left, posTop, fSelColor, bSelColor);
+                            this.positionText("[" + symbol.ToString() + "] " + strings[i], left, posTop, fSelColor, bSelColor);
+                        }
+                        else
+                        {
+                            this.positionText("[" + i.ToString() + "] " + strings[i], left, posTop, fColor, bColor);
+                        }
+                        posTop++;
+                    }
+                    ck = Console.ReadKey();
+                    if (ck.Key == ConsoleKey.DownArrow)
+                    {
+                        counter++;
+                    }
+                    else if (ck.Key == ConsoleKey.UpArrow)
+                    {
+                        counter--;
+                    }
+                    else if (ck.Key == ConsoleKey.Enter)
+                    {
+                        outNumber = counter;
+                        break;
                     }
                     else
                     {
-                        this.positionText("[" + i.ToString() + "] " + strings[i], left, posTop, fColor, bColor);
+                        this.write("error key input", ConsoleColor.Red);
                     }
-                    posTop++;
+                    Console.Clear();
                 }
-                ck = Console.ReadKey();
-                if (ck.Key == ConsoleKey.DownArrow)
-                {
-                    counter++;
-                }
-                else if (ck.Key == ConsoleKey.UpArrow)
-                {
-                    counter--;
-                }
-                else if (ck.Key == ConsoleKey.Enter)
-                {
-                    outNumber = counter;
-                    break;
-                }
-                else
-                {
-                    this.write("error key input", ConsoleColor.Red);
-                }
-                Console.Clear();
             }
+            catch (NullReferenceException e)
+            {
+                this.writeLine("message 1: " + e.Message.ToString(), ConsoleColor.Red);
+            }
+            catch (Exception e)
+            {
+                this.writeLine("message 2: " + e.Message.ToString(), ConsoleColor.Red);
+            }
+            finally
+            {
+
+            } 
         }
         /// <summary>
         /// Dynamic waterfall menu with output
@@ -207,61 +276,86 @@ namespace Happy_CLI
         {
             int counter = 0;
             int posTop = 0;
-            string line = "";
+            string temp1 = string.Empty;
+            string temp2 = string.Empty;
+            string temp3 = string.Empty;
             ConsoleKeyInfo ck;
-            
-            if(strings.Length < 0){return;}
-
-            int maxLength = strings.Max(x => x).Length;
-            line = line.PadLeft(maxLength+8, '-');
-       
-            while (true)
+            try
             {
-                posTop = top;
+                int maxLength = strings.Max(x => x).Length;
+                this.maxSpace(ref strings, maxLength);
 
-                if (counter >= strings.Length)
+                while (true)
                 {
-                    counter = 0;
-                }
-                else if (counter < 0)
-                {
-                    counter = strings.Length - 1;
-                }
-                //up line
-                this.positionText(line, left, posTop++, fColor, bColor);
-                
-                for (int i = 0; i < strings.Length; i++)
-                {
-                    if (counter == i)
+                    posTop = top;
+
+                    if (counter >= strings.Length)
                     {
-                        this.positionText("| [" + i.ToString() + "] " + strings[i] + " |", left, posTop, fSelColor, bSelColor);
+                        counter = 0;
                     }
-                    else
+                    else if (counter < 0)
                     {
-                        this.positionText("| [" + i.ToString() + "] " + strings[i] + " |", left, posTop, fColor, bColor);
+                        counter = strings.Length - 1;
                     }
-                    posTop++;
+                    //up line
+                    this.RepeatCharacterColor('-', maxLength + 8, fColor, bColor, left, posTop++);
+
+                    for (int i = 0; i < strings.Length; i++)
+                    {
+                        if (counter == i)
+                        {
+                            temp1 = "| ";
+                            this.positionText(temp1, left, posTop, fColor, bColor);
+                            temp2 = "[" + i.ToString() + "] ";
+                            this.positionText(temp2 + strings[i], (left + temp1.Length), posTop, fSelColor, bSelColor);
+                            temp3 = " |";
+                            this.positionText(temp3, (left + temp1.Length + temp2.Length + strings[i].Length), posTop, fColor, bColor);
+                        }
+                        else
+                        {
+                            temp1 = "| ";
+                            this.positionText(temp1, left, posTop, fColor, bColor);
+                            temp2 = "[" + i.ToString() + "] ";
+                            this.positionText(temp2 + strings[i], (left + temp1.Length), posTop, fColor, bColor);
+                            temp3 = " |";
+                            this.positionText(temp3, (left + temp1.Length + temp2.Length + strings[i].Length), posTop, fColor, bColor);
+                        }
+                        posTop++;
+                    }
+                    //down line
+                    this.RepeatCharacterColor('-', maxLength + 8, fColor, bColor, left, posTop);
+
+                    ck = Console.ReadKey();
+                    if (ck.Key == ConsoleKey.DownArrow)
+                    {
+                        counter++;
+                    }
+                    else if (ck.Key == ConsoleKey.UpArrow)
+                    {
+                        counter--;
+                    }
+                    else if (ck.Key == ConsoleKey.Enter)
+                    {
+                        outNumber = counter;
+                        break;
+                    }
+
+                    Console.Clear();
                 }
-                //down line
-                this.positionText(line, left, posTop, fColor, bColor);
-                
-                ck = Console.ReadKey();
-                if (ck.Key == ConsoleKey.DownArrow)
-                {
-                    counter++;
-                }
-                else if (ck.Key == ConsoleKey.UpArrow)
-                {
-                    counter--;
-                }
-                else if (ck.Key == ConsoleKey.Enter)
-                {
-                    outNumber = counter;
-                    break;
-                }
-                
-                Console.Clear();
             }
+            catch (NullReferenceException e)
+            {
+                this.writeLine("message 1: " + e.Message.ToString(), ConsoleColor.Red);
+            }
+            catch (Exception e)
+            {
+                this.writeLine("message 2: " + e.Message.ToString(), ConsoleColor.Red);
+            }
+            finally
+            {
+
+            }
+
         }
         /// <summary>
         /// Dynamic waterfall menu with output
@@ -280,61 +374,86 @@ namespace Happy_CLI
         {
             int counter = 0;
             int posTop = 0;
-            string line = "";
+            string temp1 = string.Empty;
+            string temp2 = string.Empty;
+            string temp3 = string.Empty;
             ConsoleKeyInfo ck;
-
-            if (strings.Length < 0) { return; }
-
-            int maxLength = strings.Max(x => x).Length;
-            line = line.PadLeft(maxLength + 8, '-');
-
-            while (true)
+            try
             {
-                posTop = top;
+                int maxLength = strings.Max(x => x).Length;//NullReferenceException
+                this.maxSpace(ref strings, maxLength);
 
-                if (counter >= strings.Length)
+                while (true)
                 {
-                    counter = 0;
-                }
-                else if (counter < 0)
-                {
-                    counter = strings.Length - 1;
-                }
-                //up line
-                this.positionText(line, left, posTop++, fColor, bColor);
+                    posTop = top;
 
-                for (int i = 0; i < strings.Length; i++)
-                {
-                    if (counter == i)
+                    if (counter >= strings.Length)
                     {
-                        this.positionText("| [" + symbol.ToString() + "] " + strings[i] + " |", left, posTop, fSelColor, bSelColor);
+                        counter = 0;
                     }
-                    else
+                    else if (counter < 0)
                     {
-                        this.positionText("| [" + i.ToString() + "] " + strings[i] + " |", left, posTop, fColor, bColor);
+                        counter = strings.Length - 1;
                     }
-                    posTop++;
-                }
-                //down line
-                this.positionText(line, left, posTop, fColor, bColor);
+                    //up line
+                    this.RepeatCharacterColor('-', maxLength + 8, fColor, bColor, left, posTop++);
 
-                ck = Console.ReadKey();
-                if (ck.Key == ConsoleKey.DownArrow)
-                {
-                    counter++;
-                }
-                else if (ck.Key == ConsoleKey.UpArrow)
-                {
-                    counter--;
-                }
-                else if (ck.Key == ConsoleKey.Enter)
-                {
-                    outNumber = counter;
-                    break;
-                }
+                    for (int i = 0; i < strings.Length; i++)
+                    {
+                        if (counter == i)
+                        {
+                            temp1 = "| ";
+                            this.positionText(temp1, left, posTop, fColor, bColor);
+                            temp2 = "[" + symbol.ToString() + "] ";
+                            this.positionText(temp2 + strings[i], (left + temp1.Length), posTop, fSelColor, bSelColor);
+                            temp3 = " |";
+                            this.positionText(temp3, (left + temp1.Length + temp2.Length + strings[i].Length), posTop, fColor, bColor);
+                        }
+                        else
+                        {
+                            temp1 = "| ";
+                            this.positionText(temp1, left, posTop, fColor, bColor);
+                            temp2 = "[" + i.ToString() + "] ";
+                            this.positionText(temp2 + strings[i], (left + temp1.Length), posTop, fColor, bColor);
+                            temp3 = " |";
+                            this.positionText(temp3, (left + temp1.Length + temp2.Length + strings[i].Length), posTop, fColor, bColor);
+                        }
+                        posTop++;
+                    }
+                    //down line
+                    this.RepeatCharacterColor('-', maxLength + 8, fColor, bColor, left, posTop);
 
-                Console.Clear();
+                    ck = Console.ReadKey();
+                    if (ck.Key == ConsoleKey.DownArrow)
+                    {
+                        counter++;
+                    }
+                    else if (ck.Key == ConsoleKey.UpArrow)
+                    {
+                        counter--;
+                    }
+                    else if (ck.Key == ConsoleKey.Enter)
+                    {
+                        outNumber = counter;
+                        break;
+                    }
+
+                    Console.Clear();
+                }
             }
+            catch (NullReferenceException e)
+            {
+                this.writeLine("message 1: " + e.Message.ToString(), ConsoleColor.Red);
+            }
+            catch(Exception e)
+            {
+                this.writeLine("message 2: " + e.Message.ToString(), ConsoleColor.Red);
+            }
+            finally
+            {
+
+            }
+            
         }
         /// <summary>
         /// 
@@ -356,76 +475,90 @@ namespace Happy_CLI
         {
             int counter = 0;
             int posTop = 0;
-            string line = "";
             string temp1 = string.Empty;
             string temp2 = string.Empty;
             string temp3 = string.Empty;
             ConsoleKeyInfo ck;
 
-            if (strings.Length < 0) { return; }
-
-            int maxLength = strings.Max(x => x).Length;
-            line = line.PadLeft(maxLength + 8, '-');
-
-            while (true)
+            try
             {
-                posTop = top;
+                int maxLength = strings.Max(x => x).Length;
+                this.maxSpace(ref strings, maxLength);
 
-                if (counter >= strings.Length)
+                while (true)
                 {
-                    counter = 0;
-                }
-                else if (counter < 0)
-                {
-                    counter = strings.Length - 1;
-                }
-                //up line
-                this.positionText(line, left, posTop++, fColor, bColor);
+                    posTop = top;
 
-                for (int i = 0; i < strings.Length; i++)
-                {
-                    if (counter == i)
+                    if (counter >= strings.Length)
                     {
-                        temp1 = "| ";
-                        this.positionText(temp1, left, posTop, fColor, bColor);
-                        temp2 = "[" + i.ToString() + "] ";
-                        this.positionText(temp2,(left + temp1.Length),posTop,fSelMarkColor,bSelMarkColor);
-                        this.positionText(strings[i], (left + temp1.Length + temp2.Length), posTop, fSelColor, bSelColor);
-                        temp3 = " |";
-                        this.positionText(temp3, (left + temp1.Length + temp2.Length + strings[i].Length), posTop, fColor, bColor);
+                        counter = 0;
                     }
-                    else
+                    else if (counter < 0)
                     {
-                        temp1 = "| ";
-                        this.positionText(temp1, left, posTop, fColor, bColor);
-                        temp2 = "[" + i.ToString() + "] ";
-                        this.positionText(temp2, (left + temp1.Length), posTop, fMarkColor, bSelMarkColor);
-                        this.positionText(strings[i], (left + temp1.Length + temp2.Length), posTop, fColor, bColor);
-                        temp3 = " |";
-                        this.positionText(temp3, (left + temp1.Length + temp2.Length + strings[i].Length), posTop, fColor, bColor);
+                        counter = strings.Length - 1;
                     }
-                    posTop++;
-                }
-                //down line
-                this.positionText(line, left, posTop, fColor, bColor);
+                    //up line
+                    this.RepeatCharacterColor('-', maxLength + 8, fColor, bColor, left, posTop++);
 
-                ck = Console.ReadKey();
-                if (ck.Key == ConsoleKey.DownArrow)
-                {
-                    counter++;
-                }
-                else if (ck.Key == ConsoleKey.UpArrow)
-                {
-                    counter--;
-                }
-                else if (ck.Key == ConsoleKey.Enter)
-                {
-                    outNumber = counter;
-                    break;
-                }
+                    for (int i = 0; i < strings.Length; i++)
+                    {
 
-                Console.Clear();
+                        if (counter == i)
+                        {
+                            temp1 = "| ";
+                            this.positionText(temp1, left, posTop, fColor, bColor);
+                            temp2 = "[" + i.ToString() + "] ";
+                            this.positionText(temp2, (left + temp1.Length), posTop, fSelMarkColor, bSelMarkColor);
+                            this.positionText(strings[i], (left + temp1.Length + temp2.Length), posTop, fSelColor, bSelColor);
+                            temp3 = " |";
+                            this.positionText(temp3, (left + temp1.Length + temp2.Length + strings[i].Length), posTop, fColor, bColor);
+                        }
+                        else
+                        {
+                            temp1 = "| ";
+                            this.positionText(temp1, left, posTop, fColor, bColor);
+                            temp2 = "[" + i.ToString() + "] ";
+                            this.positionText(temp2, (left + temp1.Length), posTop, fMarkColor, bSelMarkColor);
+                            this.positionText(strings[i], (left + temp1.Length + temp2.Length), posTop, fColor, bColor);
+                            temp3 = " |";
+                            this.positionText(temp3, (left + temp1.Length + temp2.Length + strings[i].Length), posTop, fColor, bColor);
+                        }
+                        posTop++;
+                    }
+                    //down line
+                    this.RepeatCharacterColor('-', maxLength + 8, fColor, bColor, left, posTop);
+
+                    ck = Console.ReadKey();
+                    if (ck.Key == ConsoleKey.DownArrow)
+                    {
+                        counter++;
+                    }
+                    else if (ck.Key == ConsoleKey.UpArrow)
+                    {
+                        counter--;
+                    }
+                    else if (ck.Key == ConsoleKey.Enter)
+                    {
+                        outNumber = counter;
+                        break;
+                    }
+
+                    Console.Clear();
+                }
             }
+            catch (NullReferenceException e)
+            {
+                this.writeLine("message 1: " + e.Message.ToString(), ConsoleColor.Red);
+            }
+            catch (Exception e)
+            {
+                this.writeLine("message 2: " + e.Message.ToString(), ConsoleColor.Red);
+            }
+            finally
+            {
+
+            }
+
         }
         /// <summary>
         /// 
@@ -448,76 +581,90 @@ namespace Happy_CLI
         {
             int counter = 0;
             int posTop = 0;
-            string line = "";
             string temp1 = string.Empty;
             string temp2 = string.Empty;
             string temp3 = string.Empty;
             ConsoleKeyInfo ck;
 
-            if (strings.Length < 0) { return; }
-
-            int maxLength = strings.Max(x => x).Length;
-            line = line.PadLeft(maxLength + 8, '-');
-
-            while (true)
+            try
             {
-                posTop = top;
+                int maxLength = strings.Max(x => x).Length;
+                this.maxSpace(ref strings, maxLength);
 
-                if (counter >= strings.Length)
+                while (true)
                 {
-                    counter = 0;
-                }
-                else if (counter < 0)
-                {
-                    counter = strings.Length - 1;
-                }
-                //up line
-                this.positionText(line, left, posTop++, fColor, bColor);
+                    posTop = top;
 
-                for (int i = 0; i < strings.Length; i++)
-                {
-                    if (counter == i)
+                    if (counter >= strings.Length)
                     {
-                        temp1 = "| ";
-                        this.positionText(temp1, left, posTop, fColor, bColor);
-                        temp2 = "[" + symbol.ToString() + "] ";
-                        this.positionText(temp2, (left + temp1.Length), posTop, fSelMarkColor, bSelMarkColor);
-                        this.positionText(strings[i], (left + temp1.Length + temp2.Length), posTop, fSelColor, bSelColor);
-                        temp3 = " |";
-                        this.positionText(temp3, (left + temp1.Length + temp2.Length + strings[i].Length), posTop, fColor, bColor);
+                        counter = 0;
                     }
-                    else
+                    else if (counter < 0)
                     {
-                        temp1 = "| ";
-                        this.positionText(temp1, left, posTop, fColor, bColor);
-                        temp2 = "[" + i.ToString() + "] ";
-                        this.positionText(temp2, (left + temp1.Length), posTop, fMarkColor, bSelMarkColor);
-                        this.positionText(strings[i], (left + temp1.Length + temp2.Length), posTop, fColor, bColor);
-                        temp3 = " |";
-                        this.positionText(temp3, (left + temp1.Length + temp2.Length + strings[i].Length), posTop, fColor, bColor);
+                        counter = strings.Length - 1;
                     }
-                    posTop++;
-                }
-                //down line
-                this.positionText(line, left, posTop, fColor, bColor);
+                    //up line
+                    this.RepeatCharacterColor('-', maxLength + 8, fColor, bColor, left, posTop++);
 
-                ck = Console.ReadKey();
-                if (ck.Key == ConsoleKey.DownArrow)
-                {
-                    counter++;
-                }
-                else if (ck.Key == ConsoleKey.UpArrow)
-                {
-                    counter--;
-                }
-                else if (ck.Key == ConsoleKey.Enter)
-                {
-                    outNumber = counter;
-                    break;
-                }
+                    for (int i = 0; i < strings.Length; i++)
+                    {
 
-                Console.Clear();
+                        if (counter == i)
+                        {
+                            temp1 = "| ";
+                            this.positionText(temp1, left, posTop, fColor, bColor);
+                            temp2 = "[" + symbol.ToString() + "] ";
+                            this.positionText(temp2, (left + temp1.Length), posTop, fSelMarkColor, bSelMarkColor);
+                            this.positionText(strings[i], (left + temp1.Length + temp2.Length), posTop, fSelColor, bSelColor);
+                            temp3 = " |";
+                            this.positionText(temp3, (left + temp1.Length + temp2.Length + strings[i].Length), posTop, fColor, bColor);
+                        }
+                        else
+                        {
+                            temp1 = "| ";
+                            this.positionText(temp1, left, posTop, fColor, bColor);
+                            temp2 = "[" + i.ToString() + "] ";
+                            this.positionText(temp2, (left + temp1.Length), posTop, fMarkColor, bSelMarkColor);
+                            this.positionText(strings[i], (left + temp1.Length + temp2.Length), posTop, fColor, bColor);
+                            temp3 = " |";
+                            this.positionText(temp3, (left + temp1.Length + temp2.Length + strings[i].Length), posTop, fColor, bColor);
+                        }
+                        posTop++;
+                    }
+                    //down line
+                    this.RepeatCharacterColor('-', maxLength + 8, fColor, bColor, left, posTop);
+
+                    ck = Console.ReadKey();
+                    if (ck.Key == ConsoleKey.DownArrow)
+                    {
+                        counter++;
+                    }
+                    else if (ck.Key == ConsoleKey.UpArrow)
+                    {
+                        counter--;
+                    }
+                    else if (ck.Key == ConsoleKey.Enter)
+                    {
+                        outNumber = counter;
+                        break;
+                    }
+
+                    Console.Clear();
+                }
             }
+            catch (NullReferenceException e)
+            {
+                this.writeLine("message 1: " + e.Message.ToString(), ConsoleColor.Red);
+            }
+            catch (Exception e)
+            {
+                this.writeLine("message 2: " + e.Message.ToString(), ConsoleColor.Red);
+            }
+            finally
+            {
+
+            }
+
         }
     }
 
