@@ -1,10 +1,20 @@
-﻿namespace Happy_CLI
+﻿using static System.Runtime.InteropServices.JavaScript.JSType;
+
+namespace Happy_CLI
 {
     public class AdvText
     {
         private int _posLeft;
         private int _posTop;
 
+        public enum Align
+        {
+            LEFT = 0,
+            RIGHT,
+            CENTRT,
+            TOP,
+            BOTTOM,
+        }
         public AdvText() { }
         /// <summary>
         /// text printing. No new line
@@ -236,6 +246,137 @@
             Console.Write(text);
             Console.ResetColor();
         }
+        public void wink(string text , int timer , ConsoleColor fColor,ConsoleColor bColor)
+        {
+            try
+            {
+                if( timer > 0 )
+                {
+                    int Timer = timer / 2;
+                    while (true)
+                    {
+                        Thread.Sleep(Timer);
+                        Console.Clear();
+                        Thread.Sleep(Timer);
+                        this.write(text, fColor, bColor);
 
+                    }
+                }
+                else
+                {
+                    this.write("The numeric value of the timer is not correct", fColor, bColor);
+                }
+                
+            }catch (DivideByZeroException e)
+            {
+                this.write("Divide by zero error ", fColor, bColor);
+            }
+        }
+        public void wink(string text, int timer, ConsoleColor fColor, ConsoleColor bColor,int left,int top)
+        {
+            try
+            {
+                if (timer > 0)
+                {
+                    int Timer = timer / 2;
+                    while (true)
+                    {
+                        Thread.Sleep(Timer);
+                        Console.Clear();
+                        Thread.Sleep(Timer);
+                        this.positionText(text,left,top,fColor, bColor);
+
+                    }
+                }
+                else
+                {
+                    this.write("The numeric value of the timer is not correct", fColor, bColor);
+                }
+
+            }
+            catch (DivideByZeroException e)
+            {
+                this.write("Divide by zero error ", fColor, bColor);
+            }catch(Exception e)
+            {
+                this.write(e.Message.ToString(), fColor, bColor);
+            }
+        }
+        public void arrow(string text,int countArrow, ConsoleColor arrowFColor, ConsoleColor textColor,bool newLine = false)
+        {
+            if (!(countArrow <= 0))
+            {
+                string arrowLeft = string.Empty.PadLeft(countArrow, '>');
+                string arrowRight = string.Empty.PadLeft(countArrow, '<');
+                this.write(arrowLeft, arrowFColor);
+                this.write(text, textColor);
+                this.write(arrowRight, arrowFColor);
+                if (newLine)
+                {
+                    Console.WriteLine();
+                }
+            }
+            else
+            {
+                this.write("The numeric value is not valid", textColor);
+            }
+            
+        }
+        public void arrow(string text, int countArrow, ConsoleColor arrowFColor, ConsoleColor textColor,int left,int top, bool newLine = false)
+        {
+            if (countArrow >= 0)
+            {
+                if((left >= 0) && (top >= 0))
+                {
+                    string arrowLeft = string.Empty.PadLeft(countArrow, '>');
+                    string arrowRight = string.Empty.PadLeft(countArrow, '<');
+                    this.positionText(arrowLeft, left, top, arrowFColor);
+                    this.positionText(text,(left + arrowLeft.Length),top,textColor);
+                    this.positionText(arrowRight, (left + arrowLeft.Length + text.Length), top, arrowFColor);
+                    if (newLine)
+                    {
+                        Console.WriteLine();
+                    }
+                }
+                else
+                {
+                    this.write("The numeric left or top value is not valid", textColor);
+                }
+               
+            }
+            else
+            {
+                this.write("The numeric value is not valid", textColor);
+            }
+
+        }
+        public void lineTitle(string text , ConsoleColor lineColor,ConsoleColor textFColor,Align align)
+        {
+            int maxWidth = Console.WindowWidth;
+            int countLine = 0;
+            int div = 0;
+            string temp = "[" + text + "]";
+            string line = string.Empty;
+            countLine = maxWidth - temp.Length;
+            div = countLine / 2;
+            if (align == Align.LEFT)
+            {
+                line = string.Empty.PadLeft(countLine, '-');
+                this.write(temp, textFColor);
+                this.write(line, lineColor);
+            }else if(align == Align.RIGHT)
+            {
+                line = string.Empty.PadLeft(countLine, '-');
+                this.write(line, lineColor);
+                this.write(temp, textFColor);
+            }
+            else if(align == Align.CENTRT)
+            {
+                line = string.Empty.PadLeft(div, '-');
+                this.write(line, lineColor);
+                this.write(temp, textFColor);
+                this.write(line, lineColor);
+            }
+        }
     }
 }
