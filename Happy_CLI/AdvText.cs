@@ -6,7 +6,9 @@ namespace Happy_CLI
     {
         private int _posLeft;
         private int _posTop;
-
+        /// <summary>
+        /// 
+        /// </summary>
         public enum Align
         {
             LEFT = 0,
@@ -246,6 +248,13 @@ namespace Happy_CLI
             Console.Write(text);
             Console.ResetColor();
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="timer"></param>
+        /// <param name="fColor"></param>
+        /// <param name="bColor"></param>
         public void wink(string text , int timer , ConsoleColor fColor,ConsoleColor bColor)
         {
             try
@@ -272,6 +281,15 @@ namespace Happy_CLI
                 this.write("Divide by zero error ", fColor, bColor);
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="timer"></param>
+        /// <param name="fColor"></param>
+        /// <param name="bColor"></param>
+        /// <param name="left"></param>
+        /// <param name="top"></param>
         public void wink(string text, int timer, ConsoleColor fColor, ConsoleColor bColor,int left,int top)
         {
             try
@@ -302,6 +320,14 @@ namespace Happy_CLI
                 this.write(e.Message.ToString(), fColor, bColor);
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="countArrow"></param>
+        /// <param name="arrowFColor"></param>
+        /// <param name="textColor"></param>
+        /// <param name="newLine"></param>
         public void arrow(string text,int countArrow, ConsoleColor arrowFColor, ConsoleColor textColor,bool newLine = false)
         {
             if (!(countArrow <= 0))
@@ -322,6 +348,16 @@ namespace Happy_CLI
             }
             
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="countArrow"></param>
+        /// <param name="arrowFColor"></param>
+        /// <param name="textColor"></param>
+        /// <param name="left"></param>
+        /// <param name="top"></param>
+        /// <param name="newLine"></param>
         public void arrow(string text, int countArrow, ConsoleColor arrowFColor, ConsoleColor textColor,int left,int top, bool newLine = false)
         {
             if (countArrow >= 0)
@@ -350,33 +386,45 @@ namespace Happy_CLI
             }
 
         }
-        public void lineTitle(string text , ConsoleColor lineColor,ConsoleColor textFColor,Align align)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="lineType"></param>
+        /// <param name="lineColor"></param>
+        /// <param name="textFColor"></param>
+        /// <param name="align"></param>
+        public void lineTitle(string text ,char lineType, ConsoleColor lineColor,ConsoleColor textFColor,Align align)
         {
             int maxWidth = Console.WindowWidth;
             int countLine = 0;
             int div = 0;
+
             string temp = "[" + text + "]";
             string line = string.Empty;
             countLine = maxWidth - temp.Length;
             div = countLine / 2;
+
             if (align == Align.LEFT)
             {
-                line = string.Empty.PadLeft(countLine, '-');
+                line = string.Empty.PadLeft(countLine, lineType);
                 this.write(temp, textFColor);
                 this.write(line, lineColor);
+
             }else if(align == Align.RIGHT)
             {
-                line = string.Empty.PadLeft(countLine, '-');
+                line = string.Empty.PadLeft(countLine, lineType);
                 this.write(line, lineColor);
                 this.write(temp, textFColor);
             }
             else if(align == Align.CENTRT)
             {
-                line = string.Empty.PadLeft(div, '-');
+                line = string.Empty.PadLeft(div, lineType);
                 this.write(line, lineColor);
                 this.write(temp, textFColor);
                 this.write(line, lineColor);
             }
         }
+
     }
 }
