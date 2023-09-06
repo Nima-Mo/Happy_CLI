@@ -286,7 +286,7 @@ namespace Happy_CLI
             }
             catch (DivideByZeroException e)
             {
-                this.write("Divide by zero error ", fColor, bColor);
+                this.write("Divide by zero error ("+e.Message+")", fColor, bColor);
             }
         }
         /// <summary>
@@ -322,7 +322,7 @@ namespace Happy_CLI
             }
             catch (DivideByZeroException e)
             {
-                this.write("Divide by zero error ", fColor, bColor);
+                this.write("Divide by zero error ("+e.Message+")", fColor, bColor);
             }
             catch (Exception e)
             {
@@ -475,8 +475,5 @@ namespace Happy_CLI
                 this.write(line, lineColor);
             }
         }
-
-
-
     }
 }
