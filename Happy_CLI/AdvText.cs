@@ -158,11 +158,11 @@ namespace Happy_CLI
         /// <param name="bColor"></param>
         /// <param name="left"></param>
         /// <param name="top"></param>
-        public void RepeatCharacterColor(char ch, int count, ConsoleColor fColor, ConsoleColor bColor,int left,int top)
+        public void RepeatCharacterColor(char ch, int count, ConsoleColor fColor, ConsoleColor bColor, int left, int top)
         {
             string tempo = string.Empty;
             tempo = tempo.PadLeft(count, ch);
-            this.positionText(tempo,left, top,fColor,bColor);
+            this.positionText(tempo, left, top, fColor, bColor);
         }
         /// <summary>
         /// Print text in position
@@ -182,7 +182,7 @@ namespace Happy_CLI
         /// <param name="left">Left position</param>
         /// <param name="top"> Top position</param>
         /// <param name="fcolor">Foreground Color</param>
-        public void positionText(string text, int left, int top,ConsoleColor fcolor)
+        public void positionText(string text, int left, int top, ConsoleColor fcolor)
         {
             Console.SetCursorPosition(left, top);
             this.write(text, fcolor);
@@ -195,10 +195,10 @@ namespace Happy_CLI
         /// <param name="top"> Top position</param>
         /// <param name="fcolor">Foreground Color</param>
         /// <param name="bcolor"> Background Color</param>
-        public void positionText(string text, int left, int top, ConsoleColor fcolor,ConsoleColor bcolor)
+        public void positionText(string text, int left, int top, ConsoleColor fcolor, ConsoleColor bcolor)
         {
             Console.SetCursorPosition(left, top);
-            this.write(text, fcolor,bcolor);
+            this.write(text, fcolor, bcolor);
         }
         /// <summary>
         /// Set Position Left For 'positionTextAt'
@@ -226,7 +226,7 @@ namespace Happy_CLI
         {
             int Left = this._posLeft + left;
             int Top = this._posTop + top;
-           this.positionTextAt(text, Left, Top);
+            this.positionTextAt(text, Left, Top);
         }
         /// <summary>
         /// Print text in continuous position
@@ -235,11 +235,11 @@ namespace Happy_CLI
         /// <param name="left">Left Position</param>
         /// <param name="top">Top Position</param>
         /// <param name="fColor">ForGround Color</param>
-        public void positionTextAt(string text, int left, int top,ConsoleColor fColor)
+        public void positionTextAt(string text, int left, int top, ConsoleColor fColor)
         {
             int Left = this._posLeft + left;
             int Top = this._posTop + top;
-            this.positionText(text, Left, Top,fColor);
+            this.positionText(text, Left, Top, fColor);
         }
         /// <summary>
         /// Print text in continuous position
@@ -249,24 +249,24 @@ namespace Happy_CLI
         /// <param name="top">Top Position</param>
         /// <param name="fColor">ForGround Color</param>
         /// <param name="bColor">Background Color</param>
-        public void positionTextAt(string text, int left, int top, ConsoleColor fColor,ConsoleColor bColor)
+        public void positionTextAt(string text, int left, int top, ConsoleColor fColor, ConsoleColor bColor)
         {
             int Left = this._posLeft + left;
             int Top = this._posTop + top;
-            this.positionText(text, Left, Top, fColor,bColor);
+            this.positionText(text, Left, Top, fColor, bColor);
         }
         /// <summary>
-        /// 
+        /// Flashing text
         /// </summary>
-        /// <param name="text"></param>
-        /// <param name="timer"></param>
-        /// <param name="fColor"></param>
-        /// <param name="bColor"></param>
-        public void wink(string text , int timer , ConsoleColor fColor,ConsoleColor bColor)
+        /// <param name="text">Text</param>
+        /// <param name="timer">Timer</param>
+        /// <param name="fColor">Forground Color</param>
+        /// <param name="bColor">Backgound Color</param>
+        public void FlashingText(string text, int timer, ConsoleColor fColor, ConsoleColor bColor)
         {
             try
             {
-                if( timer > 0 )
+                if (timer > 0)
                 {
                     int Timer = timer / 2;
                     while (true)
@@ -282,22 +282,23 @@ namespace Happy_CLI
                 {
                     this.write("The numeric value of the timer is not correct", fColor, bColor);
                 }
-                
-            }catch (DivideByZeroException e)
+
+            }
+            catch (DivideByZeroException e)
             {
                 this.write("Divide by zero error ", fColor, bColor);
             }
         }
         /// <summary>
-        /// 
+        /// Flashing Text
         /// </summary>
-        /// <param name="text"></param>
-        /// <param name="timer"></param>
-        /// <param name="fColor"></param>
-        /// <param name="bColor"></param>
-        /// <param name="left"></param>
-        /// <param name="top"></param>
-        public void wink(string text, int timer, ConsoleColor fColor, ConsoleColor bColor,int left,int top)
+        /// <param name="text">Text</param>
+        /// <param name="timer">Timer</param>
+        /// <param name="fColor">Forground Color</param>
+        /// <param name="bColor">Backgound Color</param>
+        /// <param name="left">Left Position</param>
+        /// <param name="top">Top Position</param>
+        public void FlashingText(string text, int timer, ConsoleColor fColor, ConsoleColor bColor, int left, int top)
         {
             try
             {
@@ -309,7 +310,7 @@ namespace Happy_CLI
                         Thread.Sleep(Timer);
                         Console.Clear();
                         Thread.Sleep(Timer);
-                        this.positionText(text,left,top,fColor, bColor);
+                        this.positionText(text, left, top, fColor, bColor);
 
                     }
                 }
@@ -322,28 +323,29 @@ namespace Happy_CLI
             catch (DivideByZeroException e)
             {
                 this.write("Divide by zero error ", fColor, bColor);
-            }catch(Exception e)
+            }
+            catch (Exception e)
             {
                 this.write(e.Message.ToString(), fColor, bColor);
             }
         }
         /// <summary>
-        /// 
+        ///  Text Arrow
         /// </summary>
-        /// <param name="text"></param>
-        /// <param name="countArrow"></param>
-        /// <param name="arrowFColor"></param>
-        /// <param name="textColor"></param>
-        /// <param name="newLine"></param>
-        public void arrow(string text,int countArrow, ConsoleColor arrowFColor, ConsoleColor textColor,bool newLine = false)
+        /// <param name="text">Text</param>
+        /// <param name="countArrow">Count Arrow</param>
+        /// <param name="arrowColor">Arrow Color</param>
+        /// <param name="textColor">Text Color</param>
+        /// <param name="newLine">New Line</param>
+        public void arrow(string text, int countArrow, ConsoleColor arrowColor, ConsoleColor textColor, bool newLine = false)
         {
             if (!(countArrow <= 0))
             {
                 string arrowLeft = string.Empty.PadLeft(countArrow, '>');
                 string arrowRight = string.Empty.PadLeft(countArrow, '<');
-                this.write(arrowLeft, arrowFColor);
+                this.write(arrowLeft, arrowColor);
                 this.write(text, textColor);
-                this.write(arrowRight, arrowFColor);
+                this.write(arrowRight, arrowColor);
                 if (newLine)
                 {
                     Console.WriteLine();
@@ -353,28 +355,28 @@ namespace Happy_CLI
             {
                 this.write("The numeric value is not valid", textColor);
             }
-            
+
         }
         /// <summary>
-        /// Text arrow
+        /// Text Arrow
         /// </summary>
         /// <param name="text">Text</param>
         /// <param name="countArrow">Count Arrow</param>
         /// <param name="arrowColor">Arrow Color</param>
-        /// <param name="textColor"></param>
-        /// <param name="left"></param>
-        /// <param name="top"></param>
-        /// <param name="newLine"></param>
-        public void arrow(string text, int countArrow, ConsoleColor arrowColor, ConsoleColor textColor,int left,int top, bool newLine = false)
+        /// <param name="textColor">Text Color</param>
+        /// <param name="left">Left</param>
+        /// <param name="top">Top</param>
+        /// <param name="newLine">New Line</param>
+        public void arrow(string text, int countArrow, ConsoleColor arrowColor, ConsoleColor textColor, int left, int top, bool newLine = false)
         {
             if (countArrow >= 0)
             {
-                if((left >= 0) && (top >= 0))
+                if ((left >= 0) && (top >= 0))
                 {
                     string arrowLeft = string.Empty.PadLeft(countArrow, '>');
                     string arrowRight = string.Empty.PadLeft(countArrow, '<');
                     this.positionText(arrowLeft, left, top, arrowColor);
-                    this.positionText(text,(left + arrowLeft.Length),top,textColor);
+                    this.positionText(text, (left + arrowLeft.Length), top, textColor);
                     this.positionText(arrowRight, (left + arrowLeft.Length + text.Length), top, arrowColor);
                     if (newLine)
                     {
@@ -385,23 +387,22 @@ namespace Happy_CLI
                 {
                     this.write("The numeric left or top value is not valid", textColor);
                 }
-               
+
             }
             else
             {
                 this.write("The numeric value is not valid", textColor);
             }
-
         }
         /// <summary>
-        /// 
+        /// Title line 
         /// </summary>
-        /// <param name="text"></param>
-        /// <param name="lineType"></param>
-        /// <param name="lineColor"></param>
-        /// <param name="textFColor"></param>
-        /// <param name="align"></param>
-        public void lineTitle(string text ,char lineType, ConsoleColor lineColor,ConsoleColor textFColor,Align align)
+        /// <param name="text">Text</param>
+        /// <param name="lineType">Line Type</param>
+        /// <param name="lineColor">Line Color</param>
+        /// <param name="textFColor">Forground Text</param>
+        /// <param name="align">Align</param>
+        public void TitleLine(string text, char lineType, ConsoleColor lineColor, ConsoleColor textFColor, Align align)
         {
             int maxWidth = Console.WindowWidth;
             int countLine = 0;
@@ -418,13 +419,14 @@ namespace Happy_CLI
                 this.write(temp, textFColor);
                 this.write(line, lineColor);
 
-            }else if(align == Align.RIGHT)
+            }
+            else if (align == Align.RIGHT)
             {
                 line = string.Empty.PadLeft(countLine, lineType);
                 this.write(line, lineColor);
                 this.write(temp, textFColor);
             }
-            else if(align == Align.CENTRT)
+            else if (align == Align.CENTRT)
             {
                 line = string.Empty.PadLeft(div, lineType);
                 this.write(line, lineColor);
@@ -433,15 +435,15 @@ namespace Happy_CLI
             }
         }
         /// <summary>
-        /// 
+        /// Title line 
         /// </summary>
-        /// <param name="text"></param>
-        /// <param name="lineType"></param>
-        /// <param name="lineColor"></param>
-        /// <param name="textFColor"></param>
-        /// <param name="textBColor"></param>
-        /// <param name="align"></param>
-        public void lineTitle(string text, char lineType, ConsoleColor lineColor, ConsoleColor textFColor, ConsoleColor textBColor, Align align)
+        /// <param name="text">Text</param>
+        /// <param name="lineType">Line Type</param>
+        /// <param name="lineColor">Line Color</param>
+        /// <param name="textFColor">Forground Text</param>
+        /// <param name="textBColor">Background Text</param>
+        /// <param name="align">Align</param>
+        public void TitleLine(string text, char lineType, ConsoleColor lineColor, ConsoleColor textFColor, ConsoleColor textBColor, Align align)
         {
             int maxWidth = Console.WindowWidth;
             int countLine = 0;
@@ -455,7 +457,7 @@ namespace Happy_CLI
             if (align == Align.LEFT)
             {
                 line = string.Empty.PadLeft(countLine, lineType);
-                this.write(temp, textFColor,textBColor);
+                this.write(temp, textFColor, textBColor);
                 this.write(line, lineColor);
 
             }
@@ -463,7 +465,7 @@ namespace Happy_CLI
             {
                 line = string.Empty.PadLeft(countLine, lineType);
                 this.write(line, lineColor);
-                this.write(temp, textFColor,textBColor);
+                this.write(temp, textFColor, textBColor);
             }
             else if (align == Align.CENTRT)
             {
@@ -473,6 +475,8 @@ namespace Happy_CLI
                 this.write(line, lineColor);
             }
         }
+
+
 
     }
 }
