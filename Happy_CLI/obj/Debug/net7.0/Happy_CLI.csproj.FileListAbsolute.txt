@@ -12,3 +12,17 @@ C:\Users\Dell\source\repos\Happy_CLI\Happy_CLI\Happy_CLI\obj\Debug\net7.0\refint
 C:\Users\Dell\source\repos\Happy_CLI\Happy_CLI\Happy_CLI\obj\Debug\net7.0\Happy_CLI.pdb
 C:\Users\Dell\source\repos\Happy_CLI\Happy_CLI\Happy_CLI\obj\Debug\net7.0\Happy_CLI.genruntimeconfig.cache
 C:\Users\Dell\source\repos\Happy_CLI\Happy_CLI\Happy_CLI\obj\Debug\net7.0\ref\Happy_CLI.dll
+C:\Users\MAHAN-PC\Source\Repos\Nima-Mo\Happy_CLI\Happy_CLI\bin\Debug\net7.0\Happy_CLI.exe
+C:\Users\MAHAN-PC\Source\Repos\Nima-Mo\Happy_CLI\Happy_CLI\bin\Debug\net7.0\Happy_CLI.deps.json
+C:\Users\MAHAN-PC\Source\Repos\Nima-Mo\Happy_CLI\Happy_CLI\bin\Debug\net7.0\Happy_CLI.runtimeconfig.json
+C:\Users\MAHAN-PC\Source\Repos\Nima-Mo\Happy_CLI\Happy_CLI\bin\Debug\net7.0\Happy_CLI.dll
+C:\Users\MAHAN-PC\Source\Repos\Nima-Mo\Happy_CLI\Happy_CLI\bin\Debug\net7.0\Happy_CLI.pdb
+C:\Users\MAHAN-PC\Source\Repos\Nima-Mo\Happy_CLI\Happy_CLI\obj\Debug\net7.0\Happy_CLI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\MAHAN-PC\Source\Repos\Nima-Mo\Happy_CLI\Happy_CLI\obj\Debug\net7.0\Happy_CLI.AssemblyInfoInputs.cache
+C:\Users\MAHAN-PC\Source\Repos\Nima-Mo\Happy_CLI\Happy_CLI\obj\Debug\net7.0\Happy_CLI.AssemblyInfo.cs
+C:\Users\MAHAN-PC\Source\Repos\Nima-Mo\Happy_CLI\Happy_CLI\obj\Debug\net7.0\Happy_CLI.csproj.CoreCompileInputs.cache
+C:\Users\MAHAN-PC\Source\Repos\Nima-Mo\Happy_CLI\Happy_CLI\obj\Debug\net7.0\Happy_CLI.dll
+C:\Users\MAHAN-PC\Source\Repos\Nima-Mo\Happy_CLI\Happy_CLI\obj\Debug\net7.0\refint\Happy_CLI.dll
+C:\Users\MAHAN-PC\Source\Repos\Nima-Mo\Happy_CLI\Happy_CLI\obj\Debug\net7.0\Happy_CLI.pdb
+C:\Users\MAHAN-PC\Source\Repos\Nima-Mo\Happy_CLI\Happy_CLI\obj\Debug\net7.0\Happy_CLI.genruntimeconfig.cache
+C:\Users\MAHAN-PC\Source\Repos\Nima-Mo\Happy_CLI\Happy_CLI\obj\Debug\net7.0\ref\Happy_CLI.dll

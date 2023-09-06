@@ -51,6 +51,13 @@ namespace Happy_CLI
             Console.ResetColor();
         }
         /// <summary>
+        /// new line
+        /// </summary>
+        public void newLine()
+        {
+            Console.WriteLine();
+        }
+        /// <summary>
         /// Color text printing.new line
         /// </summary>
         /// <param name="text">Input Text</param>
@@ -60,6 +67,14 @@ namespace Happy_CLI
             Console.ForegroundColor = fcolor;
             Console.WriteLine(text);
             Console.ResetColor();
+        }
+        /// <summary>
+        /// text printing. new line
+        /// </summary>
+        /// <param name="text"></param>
+        public void writeLine(string text)
+        {
+            Console.WriteLine(text);
         }
         /// <summary>
         /// Color text printing. new line
@@ -135,7 +150,7 @@ namespace Happy_CLI
             }
         }
         /// <summary>
-        /// 
+        /// Repeat a character in position
         /// </summary>
         /// <param name="ch"></param>
         /// <param name="count"></param>
@@ -211,8 +226,7 @@ namespace Happy_CLI
         {
             int Left = this._posLeft + left;
             int Top = this._posTop + top;
-            Console.SetCursorPosition(Left, Top);
-            Console.Write(text);
+           this.positionTextAt(text, Left, Top);
         }
         /// <summary>
         /// Print text in continuous position
@@ -225,10 +239,7 @@ namespace Happy_CLI
         {
             int Left = this._posLeft + left;
             int Top = this._posTop + top;
-            Console.SetCursorPosition(Left, Top);
-            Console.ForegroundColor = fColor;
-            Console.Write(text);
-            Console.ResetColor();
+            this.positionText(text, Left, Top,fColor);
         }
         /// <summary>
         /// Print text in continuous position
@@ -242,11 +253,7 @@ namespace Happy_CLI
         {
             int Left = this._posLeft + left;
             int Top = this._posTop + top;
-            Console.SetCursorPosition(Left, Top);
-            Console.ForegroundColor = fColor;
-            Console.BackgroundColor = bColor;
-            Console.Write(text);
-            Console.ResetColor();
+            this.positionText(text, Left, Top, fColor,bColor);
         }
         /// <summary>
         /// 
@@ -349,16 +356,16 @@ namespace Happy_CLI
             
         }
         /// <summary>
-        /// 
+        /// Text arrow
         /// </summary>
-        /// <param name="text"></param>
-        /// <param name="countArrow"></param>
-        /// <param name="arrowFColor"></param>
+        /// <param name="text">Text</param>
+        /// <param name="countArrow">Count Arrow</param>
+        /// <param name="arrowColor">Arrow Color</param>
         /// <param name="textColor"></param>
         /// <param name="left"></param>
         /// <param name="top"></param>
         /// <param name="newLine"></param>
-        public void arrow(string text, int countArrow, ConsoleColor arrowFColor, ConsoleColor textColor,int left,int top, bool newLine = false)
+        public void arrow(string text, int countArrow, ConsoleColor arrowColor, ConsoleColor textColor,int left,int top, bool newLine = false)
         {
             if (countArrow >= 0)
             {
@@ -366,9 +373,9 @@ namespace Happy_CLI
                 {
                     string arrowLeft = string.Empty.PadLeft(countArrow, '>');
                     string arrowRight = string.Empty.PadLeft(countArrow, '<');
-                    this.positionText(arrowLeft, left, top, arrowFColor);
+                    this.positionText(arrowLeft, left, top, arrowColor);
                     this.positionText(text,(left + arrowLeft.Length),top,textColor);
-                    this.positionText(arrowRight, (left + arrowLeft.Length + text.Length), top, arrowFColor);
+                    this.positionText(arrowRight, (left + arrowLeft.Length + text.Length), top, arrowColor);
                     if (newLine)
                     {
                         Console.WriteLine();
@@ -422,6 +429,47 @@ namespace Happy_CLI
                 line = string.Empty.PadLeft(div, lineType);
                 this.write(line, lineColor);
                 this.write(temp, textFColor);
+                this.write(line, lineColor);
+            }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="lineType"></param>
+        /// <param name="lineColor"></param>
+        /// <param name="textFColor"></param>
+        /// <param name="textBColor"></param>
+        /// <param name="align"></param>
+        public void lineTitle(string text, char lineType, ConsoleColor lineColor, ConsoleColor textFColor, ConsoleColor textBColor, Align align)
+        {
+            int maxWidth = Console.WindowWidth;
+            int countLine = 0;
+            int div = 0;
+
+            string temp = "[" + text + "]";
+            string line = string.Empty;
+            countLine = maxWidth - temp.Length;
+            div = countLine / 2;
+
+            if (align == Align.LEFT)
+            {
+                line = string.Empty.PadLeft(countLine, lineType);
+                this.write(temp, textFColor,textBColor);
+                this.write(line, lineColor);
+
+            }
+            else if (align == Align.RIGHT)
+            {
+                line = string.Empty.PadLeft(countLine, lineType);
+                this.write(line, lineColor);
+                this.write(temp, textFColor,textBColor);
+            }
+            else if (align == Align.CENTRT)
+            {
+                line = string.Empty.PadLeft(div, lineType);
+                this.write(line, lineColor);
+                this.write(temp, textFColor, textBColor);
                 this.write(line, lineColor);
             }
         }
