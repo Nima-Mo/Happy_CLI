@@ -417,7 +417,7 @@ namespace Happy_CLI
         /// Display text in a bar
         /// </summary>
         /// <param name="text">Text input</param>
-        /// <param name="alignCenter">Align Text</param>
+        /// <param name="align">Align Text</param>
         /// <param name="bColor">Background Color</param>
         /// <param name="fColor">Forground Color</param>
         public void textBar(string text,Align align,ConsoleColor bColor,ConsoleColor fColor)
