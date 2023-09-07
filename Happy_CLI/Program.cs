@@ -27,4 +27,8 @@ string[] list =
 outPutStyle.ColumnarText(list,5,5,ConsoleColor.Green);
 outPutStyle.ColumnarText(list, 5, 5, ConsoleColor.Green,ConsoleColor.Gray);
 outPutStyle.textBar("hello gayshjgjhjgjgjghjjghjghjghjghjhhgjghjgjgjgjgjhjgjgjgjgjgjgjgjgj",Align.CENTRT,ConsoleColor.White,ConsoleColor.Green);
+outPutStyle.olListChar(list,false,ConsoleColor.Green,ConsoleColor.Magenta,"-->");
+outPutStyle.olListNumber(list, ConsoleColor.Green, ConsoleColor.Magenta,"-->");
+
+
 

@@ -11,6 +11,18 @@ namespace Happy_CLI
     {
         public OutPutStyle(){}
         /// <summary>
+        /// Print Line
+        /// </summary>
+        /// <param name="countLine">Count Line</param>
+        /// <param name="lineColor">Line Color</param>
+        /// <param name="typeLine">Type Line</param>
+        public void printLine(int countLine, ConsoleColor lineColor, char typeLine='-')
+        {
+            string line = string.Empty;
+            line.PadLeft(countLine,typeLine);
+            this.writeLine(line,lineColor);
+        }
+        /// <summary>
         /// Print text in multiple columns and rows
         /// </summary>
         /// <param name="list">strings</param>
