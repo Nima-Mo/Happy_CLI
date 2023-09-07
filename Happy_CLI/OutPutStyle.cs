@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -419,26 +420,36 @@ namespace Happy_CLI
         /// <param name="alignCenter">Align Text</param>
         /// <param name="bColor">Background Color</param>
         /// <param name="fColor">Forground Color</param>
-        public void textBar(string text,bool alignCenter,ConsoleColor bColor,ConsoleColor fColor)
+        public void textBar(string text,Align align,ConsoleColor bColor,ConsoleColor fColor)
         {
-            int max = 0;
-            if(alignCenter)
+            int maxWidth = Console.WindowWidth;
+            int countLine = 0;
+            int div = 0;
+
+            string temp = text;
+            string line = string.Empty;
+            countLine = maxWidth - temp.Length;
+            div = countLine / 2;
+
+            if (align == Align.LEFT)
             {
-                max = (Console.WindowWidth / 2) - (text.Length / 2);
+                line = string.Empty.PadLeft(countLine, ' ');
+                this.write(temp,fColor,bColor);
+                this.write(line, ConsoleColor.White,bColor);
+
             }
-            else
+            else if (align == Align.RIGHT)
             {
-                max = (Console.WindowWidth / 4) - (text.Length / 2);
+                line = string.Empty.PadLeft(countLine, ' ');
+                this.write(line, ConsoleColor.White, bColor);
+                this.write(temp, fColor, bColor);
             }
-            for (int i = 0; i < (Console.WindowWidth - text.Length); i++)
+            else if (align == Align.CENTRT)
             {
-                Console.BackgroundColor = bColor;
-                Console.ForegroundColor = fColor;
-                Console.Write(" ");
-                if (i == max)
-                {
-                    Console.Write(text);
-                }
+                line = string.Empty.PadLeft(div, ' ');
+                this.write(line, ConsoleColor.White, bColor);
+                this.write(temp, fColor, bColor);
+                this.write(line, ConsoleColor.White, bColor);
             }
             Console.ResetColor();
             Console.WriteLine();

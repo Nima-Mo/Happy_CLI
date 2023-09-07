@@ -9,14 +9,7 @@ namespace Happy_CLI
         /// <summary>
         /// 
         /// </summary>
-        public enum Align
-        {
-            LEFT = 0,
-            RIGHT,
-            CENTRT,
-            TOP,
-            BOTTOM,
-        }
+       
         public AdvText() { }
         /// <summary>
         /// text printing. No new line
