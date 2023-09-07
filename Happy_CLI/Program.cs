@@ -2,8 +2,17 @@
 
 AdvText adv = new AdvText();
 
-//adv.wink("Hello Hav Are You Liana", 2, ConsoleColor.Red, ConsoleColor.White);
-Console.WriteLine();
-adv.arrow(" helllo liana ",20,ConsoleColor.Red, ConsoleColor.White,10,10,true);
-adv.lineTitle("hello liana hello nima", ConsoleColor.Red, ConsoleColor.Green,AdvText.Align.CENTRT);
+adv.write("hello word");
+adv.write("hello word",ConsoleColor.Green);
+adv.write("hello word", ConsoleColor.Green,ConsoleColor.Gray);
+adv.posTop = 0;
+adv.posLeft = 0;
+for (int i = 0; i < 10; i++)
+{
+    adv.positionTextAt("  ",i,i+1,ConsoleColor.Green,ConsoleColor.Red);
+}
+adv.FlashingText("wink",-1,ConsoleColor.Cyan,ConsoleColor.Red);
+adv.newLine();
 
+adv.arrow("nima mohammadi",10,ConsoleColor.Cyan,ConsoleColor.Red,true);
+adv.arrow("nima mohammadi", 10, ConsoleColor.Cyan, ConsoleColor.Red,20,20, true);

@@ -19,10 +19,6 @@ namespace Happy_CLI
         /// <param name="space">The space between the columns</param>
         public void ColumnarText(string[]list,int row,int col,ConsoleColor fcolor,int space = -15)
         {
-            if (list.Length == 0)
-            {
-                return;
-            }
             int counter = 0;
             string tempo = string.Empty;
             
@@ -55,10 +51,6 @@ namespace Happy_CLI
         /// <param name="space">The space between the columns</param>
         public void ColumnarText(string[] list, int row, int col, ConsoleColor fcolor,ConsoleColor bcolor,int space =-15)
         {
-            if (list.Length == 0)
-            {
-                return;
-            }
             int counter = 0;
             string tempo = string.Empty;
 
@@ -89,10 +81,6 @@ namespace Happy_CLI
         /// <param name="space">The space between the columns</param>
         public void ColumnarText(string[] list,int col, ConsoleColor fcolor,int space = -15)
         {
-            if(list.Length == 0)
-            {
-                return;
-            }
             int counter = 0;
             int Col = 0;
             string tempo = string.Empty;
@@ -126,10 +114,6 @@ namespace Happy_CLI
         /// <param name="space">The space between the columns</param>
         public void ColumnarText(string[] list, int col, ConsoleColor fcolor,ConsoleColor bcolor, int space = -15)
         {
-            if (list.Length == 0)
-            {
-                return;
-            }
             int counter = 0;
             int Col = 0;
             string tempo = string.Empty;
