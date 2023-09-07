@@ -23,7 +23,8 @@ namespace Happy_CLI
             temp = sep.ToString();
             foreach (var column in _columns)
             {
-                temp += string.Format("{0,5}|",column);
+                temp += string.Format("{0,-2}{1,2}",column,sep.ToString());
+
             }
             this.printLine(temp.Length, lineColor, typeLine);
             this.writeLine(sep.ToString() + this.title + sep.ToString(), titleColor);

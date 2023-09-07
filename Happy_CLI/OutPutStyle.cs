@@ -19,7 +19,7 @@ namespace Happy_CLI
         public void printLine(int countLine, ConsoleColor lineColor, char typeLine='-')
         {
             string line = string.Empty;
-            line.PadLeft(countLine,typeLine);
+            line = line.PadLeft(countLine,typeLine);
             this.writeLine(line,lineColor);
         }
         /// <summary>
