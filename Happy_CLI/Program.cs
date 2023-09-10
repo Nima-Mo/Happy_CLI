@@ -2,7 +2,7 @@
 
 AdvText adv = new AdvText();
 OutPutStyle outPutStyle = new OutPutStyle();
-Table table = new Table("my table","blablabla");
+
 adv.write("hello word");
 adv.write("hello word",ConsoleColor.Green);
 adv.write("hello word", ConsoleColor.Green,ConsoleColor.Gray);
@@ -32,6 +32,6 @@ outPutStyle.olListChar(list,false,ConsoleColor.Green,ConsoleColor.Magenta,"-->")
 outPutStyle.olListNumber(list, ConsoleColor.Green, ConsoleColor.Magenta,"-->");
 
 List<string> list2 = new List<string>() { "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", };
-table.columns = list2;
-table.printTable('-', ConsoleColor.Green, ConsoleColor.Red);
+
+
 

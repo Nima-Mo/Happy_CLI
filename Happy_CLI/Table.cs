@@ -8,50 +8,31 @@ namespace Happy_CLI
 {
     public class Table:OutPutStyle
     {
-        private string _title;
+        private string _tableName;
         private string _description;
-        private List<string> _columns;
-        protected const char sep = '|';
-        public Table(string title,string description) 
+        private string _columns;
+        private List<string> _rows;
+        private string[] _temp;
+        public Table() { }
+        public Table(string tableName, string description, string columns, List<string> rows)
         {
-            _title = title;
+            _tableName = tableName;
             _description = description;
+            _columns = columns;
+            _rows = rows;
         }
-        protected void printColumn(char typeLine,ConsoleColor lineColor,ConsoleColor titleColor)
+        public string tableName {  get { return _tableName; } set { _tableName = value; } }
+        public string description { get { return _description; } set { _description = value; } }
+        public string columns { get { return _columns; } set { _columns = value; } }
+        public List<string> rows { get { return rows; } set { rows = value; } }
+        protected void combine(List<string> rows,string columns) 
         {
-            string temp = string.Empty;
-            temp = sep.ToString();
-            foreach (var column in _columns)
-            {
-                temp += string.Format("{0,-2}{1,2}",column,sep.ToString());
-
-            }
-            this.printLine(temp.Length, lineColor, typeLine);
-            this.writeLine(sep.ToString() + this.title + sep.ToString(), titleColor);
-            this.printLine(temp.Length, lineColor, typeLine);
-            this.writeLine(temp);
-            this.printLine(temp.Length, lineColor, typeLine);
-
+            this._rows.Insert(0, columns);
         }
-        public string title
+        protected string[] spliter(string str)
         {
-            get { return _title; }
-            set { _title = value; }
-        }
-        public string description
-        {
-            get { return _description; }
-            set { _description = value; }
-        }
-        public List<string> columns
-        {
-            get { return _columns; }
-            set { _columns = value; }
-        }
-        public void printTable(char typeLine, ConsoleColor lineColor, ConsoleColor titleColor)
-        {
-            this.printColumn(typeLine,lineColor,titleColor);
-
+            this._temp = str.Split(',');
+            return this._temp;
         }
 
     }
