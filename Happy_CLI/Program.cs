@@ -31,7 +31,15 @@ outPutStyle.textBar("hello gayshjgjhjgjgjghjjghjghjghjghjhhgjghjgjgjgjgjhjgjgjgj
 outPutStyle.olListChar(list,false,ConsoleColor.Green,ConsoleColor.Magenta,"-->");
 outPutStyle.olListNumber(list, ConsoleColor.Green, ConsoleColor.Magenta,"-->");
 
-List<string> list2 = new List<string>() { "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", };
+List<string> list2 = new List<string>();
+list2.Add("Sun,Mon,Tue,Wed,Thu,Fri,Sat");
+list2.Add("Sun,Mon,Tue,Wed,Thu,Fri,Sat");
+list2.Add("Sun,Mon,Tue,Wed,Thu,Fri,Sat");
+list2.Add("Sun,Mon,Tue,Wed,Thu,Fri,Sat");
+list2.Add("Sun,Mon,Tue,Wed,Thu,Fri,Sat");
+
+Table table = new Table("my table", "this is test", "SunC,MonC,TueC,WedC,ThuC,FriC,SatC", list2);
+table.drawTable();
 
 
 

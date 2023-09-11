@@ -55,18 +55,54 @@ namespace Happy_CLI
         }
         protected void formating(string[][]temp)
         {
-           this._tempFormating = new string[temp.GetUpperBound(0)];
-            for(int i = 0 ;i < this._tempFormating.Length; i++)
+            try
             {
-                this._tempFormating[i] = "|";
-            }
-           for (int i = temp.GetLowerBound(0);i < temp.GetUpperBound(0); i++)
-            {
-                for(int j = temp.GetLowerBound(1);j < temp.GetUpperBound(1);j++) 
+                this._tempFormating = new string[temp.GetUpperBound(0)];
+                for (int i = 0; i < this._tempFormating.Length; i++)
                 {
-                    this._tempFormating[i] += string.Format("{0,15}|", temp[j]);
+                    this._tempFormating[i] = "|";
+                }
+                for (int i = temp.GetLowerBound(0); i < temp.GetUpperBound(0); i++)
+                {
+                    for (int j = temp.GetLowerBound(1); j < temp.GetUpperBound(1); j++)
+                    {
+                        this._tempFormating[i] += string.Format("{0,15}|", temp[i][j]);
+                    }
                 }
             }
+            catch (ArgumentNullException e)
+            {
+                this.writeLine(e.Message,ConsoleColor.Red);
+            }
+            
+        }
+        protected int maxLine(string[] tempFormating)
+        {
+            try
+            {
+                return this._tempFormating.Max(x => x.Length);
+            }catch (ArgumentNullException) 
+            {
+                return 0;
+            }
+            
+        }
+        public void drawTable() 
+        {
+            int countLine = this.maxLine(_tempFormating);
+            this.combine(_rows, _columns);
+            this.spliter(_rows);
+            this.formating(_temp);
+            this.printLine(countLine);
+            this.writeLine(_tableName);
+            this.printLine(countLine);
+            foreach (string row in this._tempFormating) 
+            {
+                this.writeLine(row);
+                this.printLine(countLine);
+            }
+            this.writeLine(_description);
+            this.printLine(countLine);
         }
     }
 }
