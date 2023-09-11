@@ -64,7 +64,7 @@ namespace Happy_CLI
                 }
                 for (int i = temp.GetLowerBound(0); i < temp.GetUpperBound(0); i++)
                 {
-                    for (int j = temp.GetLowerBound(1); j < temp.GetUpperBound(1); j++)
+                    for (int j = temp.GetLowerBound(0); j < temp.GetUpperBound(0); j++)
                     {
                         this._tempFormating[i] += string.Format("{0,15}|", temp[i][j]);
                     }
@@ -72,7 +72,15 @@ namespace Happy_CLI
             }
             catch (ArgumentNullException e)
             {
-                this.writeLine(e.Message,ConsoleColor.Red);
+                this.writeLine( "ERROR: " + e.Message,ConsoleColor.Red);
+            }
+            catch(ArgumentOutOfRangeException e)
+            {
+                this.writeLine("ERROR: " + e.Message, ConsoleColor.Red);
+            }
+            catch(IndexOutOfRangeException e)
+            {
+                this.writeLine("ERROR: " + e.Message, ConsoleColor.Red);
             }
             
         }
@@ -80,10 +88,10 @@ namespace Happy_CLI
         {
             try
             {
-                return this._tempFormating.Max(x => x.Length);
+                return this._tempFormating.Max<string>(x => x.Length);
             }catch (ArgumentNullException) 
             {
-                return 0;
+                return 100;
             }
             
         }
