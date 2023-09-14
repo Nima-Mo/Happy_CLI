@@ -55,8 +55,20 @@ namespace Happy_CLI
         }
         protected void formating(string[][]temp)
         {
+            int countSpace = temp[0][0].Length;
             try
             {
+                for (int i = temp.GetLowerBound(0)+1; i < temp.GetUpperBound(0); i++)
+                {
+                    for (int j = temp.GetLowerBound(0)+1; j < temp.GetUpperBound(0); j++)
+                    {
+                        if(countSpace < temp[i][j].Length)
+                        {
+                            countSpace = temp[i][j].Length;
+                        }
+                    }
+                }
+
                 this._tempFormating = new string[temp.GetUpperBound(0)];
                 for (int i = 0; i < this._tempFormating.Length; i++)
                 {
@@ -66,7 +78,7 @@ namespace Happy_CLI
                 {
                     for (int j = temp.GetLowerBound(0); j < temp.GetUpperBound(0); j++)
                     {
-                        this._tempFormating[i] += string.Format("{0,15}|", temp[i][j]);
+                        this._tempFormating[i] += string.Format("{0,-"+countSpace.ToString()+"}|", temp[i][j]);
                     }
                 }
             }
@@ -97,19 +109,28 @@ namespace Happy_CLI
         }
         public void drawTable() 
         {
-            int countLine = this.maxLine(_tempFormating);
             this.combine(_rows, _columns);
             this.spliter(_rows);
             this.formating(_temp);
+
+            int countLine = this._tempFormating[0].Length;
+            for (int i = 1; i < this._tempFormating.Length; i++)
+            {
+                if(countLine < this._tempFormating[i].Length)
+                {
+                    countLine = this._tempFormating[i].Length;
+                }
+            }
+            
             this.printLine(countLine);
-            this.writeLine(_tableName);
+            this.writeLine("|" + _tableName);
             this.printLine(countLine);
             foreach (string row in this._tempFormating) 
             {
                 this.writeLine(row);
                 this.printLine(countLine);
             }
-            this.writeLine(_description);
+            this.writeLine("|" + _description);
             this.printLine(countLine);
         }
     }

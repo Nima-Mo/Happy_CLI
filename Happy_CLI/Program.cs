@@ -32,7 +32,7 @@ outPutStyle.olListChar(list,false,ConsoleColor.Green,ConsoleColor.Magenta,"-->")
 outPutStyle.olListNumber(list, ConsoleColor.Green, ConsoleColor.Magenta,"-->");
 
 List<string> list2 = new List<string>();
-list2.Add("Sun,Mon,Tue,Wed,Thu,Fri,Sat");
+list2.Add("Sun,Mon,Tue,Wed,TTTTTTTTTTThu,Fri,Sat");
 list2.Add("Sun,Mon,Tue,Wed,Thu,Fri,Sat");
 list2.Add("Sun,Mon,Tue,Wed,Thu,Fri,Sat");
 list2.Add("Sun,Mon,Tue,Wed,Thu,Fri,Sat");
