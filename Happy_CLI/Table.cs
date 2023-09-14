@@ -100,10 +100,19 @@ namespace Happy_CLI
         {
             try
             {
-                return this._tempFormating.Max<string>(x => x.Length);
-            }catch (ArgumentNullException) 
+                int countLine = this._tempFormating[0].Length;
+                for (int i = 1; i < this._tempFormating.Length; i++)
+                {
+                    if (countLine < this._tempFormating[i].Length)
+                    {
+                        countLine = this._tempFormating[i].Length;
+                    }
+                }
+                return countLine;
+            }
+            catch (ArgumentNullException) 
             {
-                return 100;
+                return 0;
             }
             
         }
@@ -112,25 +121,45 @@ namespace Happy_CLI
             this.combine(_rows, _columns);
             this.spliter(_rows);
             this.formating(_temp);
-
-            int countLine = this._tempFormating[0].Length;
-            for (int i = 1; i < this._tempFormating.Length; i++)
-            {
-                if(countLine < this._tempFormating[i].Length)
-                {
-                    countLine = this._tempFormating[i].Length;
-                }
-            }
-            
+            int countLine = this.maxLine(this._tempFormating); 
+            this._tableName = this._tableName.PadRight((countLine - 2), ' ');
+            this._tableName += "|";
             this.printLine(countLine);
-            this.writeLine("|" + _tableName);
+            this.writeLine("|" + this._tableName);
             this.printLine(countLine);
             foreach (string row in this._tempFormating) 
             {
                 this.writeLine(row);
                 this.printLine(countLine);
             }
-            this.writeLine("|" + _description);
+            this._description = this._description.PadRight((countLine - 2), ' ');
+            this._description += "|";
+            this.writeLine("|" + this._description);
+            this.printLine(countLine);
+        }
+        public void drawTable(ConsoleColor cTableName, ConsoleColor cDecription)
+        {
+            this.combine(_rows, _columns);
+            this.spliter(_rows);
+            this.formating(_temp);
+            int countLine = this.maxLine(this._tempFormating);
+            this._tableName = this._tableName.PadRight((countLine - 2), ' ');
+            this.printLine(countLine);
+            this.write("|");
+            this.write(this._tableName,cTableName);
+            this.write("|");
+            this.newLine();
+            this.printLine(countLine);
+            foreach (string row in this._tempFormating)
+            {
+                this.writeLine(row);
+                this.printLine(countLine);
+            }
+            this._description = this._description.PadRight((countLine - 2), ' ');
+            this.write("|");
+            this.write(this._description,cDecription);
+            this.write("|");
+            this.newLine();
             this.printLine(countLine);
         }
     }

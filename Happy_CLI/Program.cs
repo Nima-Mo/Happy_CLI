@@ -38,8 +38,8 @@ list2.Add("Sun,Mon,Tue,Wed,Thu,Fri,Sat");
 list2.Add("Sun,Mon,Tue,Wed,Thu,Fri,Sat");
 list2.Add("Sun,Mon,Tue,Wed,Thu,Fri,Sat");
 
-Table table = new Table("my table", "this is test", "SunC,MonC,TueC,WedC,ThuC,FriC,SatC", list2);
-table.drawTable();
+Table table = new Table("my table my my", "this is test", "SunC,MonC,TueC,WedC,ThuC,FriC,SatC", list2);
+table.drawTable(ConsoleColor.Red,ConsoleColor.Green);
 
 
 
