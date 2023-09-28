@@ -78,7 +78,7 @@ namespace Happy_CLI
                 {
                     for (int j = temp.GetLowerBound(0); j < temp.GetUpperBound(0); j++)
                     {
-                        this._tempFormating[i] += string.Format("{0,-"+countSpace.ToString()+"}|", temp[i][j]);
+                        this._tempFormating[i] += string.Format("{0,-"+ countSpace.ToString() +"}|", temp[i][j]);
                     }
                 }
             }
@@ -158,6 +158,49 @@ namespace Happy_CLI
             this._description = this._description.PadRight((countLine - 2), ' ');
             this.write("|");
             this.write(this._description,cDecription);
+            this.write("|");
+            this.newLine();
+            this.printLine(countLine);
+        }
+        public void drawTable(ConsoleColor cTableName, ConsoleColor cDecription,Align aTableName,Align aDescription)
+        {
+            this.combine(_rows, _columns);
+            this.spliter(_rows);
+            this.formating(_temp);
+            int countLine = this.maxLine(this._tempFormating);
+            if(aTableName == Align.LEFT)
+            {
+                this._tableName = this._tableName.PadRight((countLine - 2), ' ');
+            }
+            else if(aTableName == Align.RIGHT)
+            {
+                this._tableName = this._tableName.PadLeft((countLine - 2), ' ');
+            }
+            else if(aTableName == Align.CENTRT)
+            {
+                string spacer = string.Empty;
+                if(this._tableName.Length % 2 == 0)
+                {
+                    this._tableName += " ";
+                }
+                int tCountLine = ((countLine-2) - this._tableName.Length) / 2;
+                spacer = spacer.PadRight(Math.Abs(tCountLine), ' ');
+                this._tableName = spacer + this._tableName + spacer;    
+            }
+            this.printLine(countLine);
+            this.write("|");
+            this.write(this._tableName, cTableName);
+            this.write("|");
+            this.newLine();
+            this.printLine(countLine);
+            foreach (string row in this._tempFormating)
+            {
+                this.writeLine(row);
+                this.printLine(countLine);
+            }
+            this._description = this._description.PadRight((countLine - 2), ' ');
+            this.write("|");
+            this.write(this._description, cDecription);
             this.write("|");
             this.newLine();
             this.printLine(countLine);
